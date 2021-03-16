@@ -1,0 +1,29 @@
+﻿<Window x:Class="client.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:client"
+        mc:Ignorable="d"
+        Title="Антивирус" 
+        Height="749.2" 
+        Width="1005.6" 
+        Visibility="Visible" 
+        ResizeMode="NoResize" 
+        WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True">
+
+
+    <Grid Background="#EEF7F7F7" Margin="0">
+        <TabControl HorizontalAlignment="Left" Height="703" VerticalAlignment="Top" Width="999" BorderThickness="0">
+            <TabItem Header="Сканирование" Foreground="#FF222831" BorderBrush="{x:Null}" FontSize="14" FontFamily="Dubai" Height="60" Background="{x:Null}" Width="200" BorderThickness="0">
+                <local:Scanner/>
+            </TabItem>
+            <TabItem Header="Мониторинг директории" Foreground="#FF222831" BorderBrush="{x:Null}" FontSize="14" FontFamily="Dubai" Background="{x:Null}" Width="200" Height="60">
+                <local:Monitoring/>
+            </TabItem>
+            <TabItem BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF222831" FontSize="14" FontFamily="Dubai" Header="Запланировать проверку" Width="200" Height="60">
+                <local:Plans/>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>

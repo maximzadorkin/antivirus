@@ -1,0 +1,37 @@
+﻿<UserControl x:Class="client.Scanner"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:client"
+             mc:Ignorable="d" Height="641.01" Width="992.857">
+    <Grid Background="White" Margin="0,0,-0.2,0.2">
+        <Button x:Name="ScanButtonChoseFile" Content="Выбрать файл" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="200" Background="White" BorderBrush="#FF393E46" Foreground="#FF393E46" Height="50" Click="ScanButtonChoseFile_Click"  />
+        <Button x:Name="ScanButtonChoseDir" Content="Выбрать директорию" HorizontalAlignment="Left" Margin="215,10,0,0" VerticalAlignment="Top" Width="200" Background="White" BorderBrush="#FF393E46" Foreground="#FF393E46" Height="50" Click="ScanButtonChoseDir_Click"/>
+        <Label Content="Выбранный путь:" HorizontalAlignment="Left" Margin="420,10,0,0" VerticalAlignment="Top" FontSize="12"/>
+        <Label x:Name="ScanLabelSelectedPath" Content="..." HorizontalAlignment="Left" Margin="420,30,0,0" VerticalAlignment="Top" FontSize="12"/>
+        <Button x:Name="ScanButtonPower" Content="Начать сканирование" HorizontalAlignment="Left" Margin="10,65,0,0" VerticalAlignment="Top" Width="975" Background="White" BorderBrush="#FF393E46" Foreground="#FF393E46" Height="50" IsEnabled="False" Click="ScanButtonPower_Click"/>
+        <StatusBar x:Name="ScanStatusBar" HorizontalAlignment="Left" Height="50" Margin="10,120,0,0" VerticalAlignment="Top" Width="975">
+            <Label Foreground="#FF393E46" FontFamily="Dubai" Height="40" Width="480"/>
+            <Separator Foreground="#FF393E46"/>
+            <ProgressBar Value="44" Width="475" Height="40">
+                <ProgressBar.Foreground>
+                    <LinearGradientBrush EndPoint="1,1" StartPoint="0,1">
+                        <GradientStop Color="#FF4DD0A9" Offset="0"/>
+                        <GradientStop Color="#FF37BD5D" Offset="1"/>
+                    </LinearGradientBrush>
+                </ProgressBar.Foreground>
+            </ProgressBar>
+        </StatusBar>
+
+        <StackPanel x:Name="ScanStackPanel" HorizontalAlignment="Left" Height="456" Margin="10,175,0,0" VerticalAlignment="Top" Width="975">
+            <Label x:Name="ScanLabelResult" Content="test" Margin="0,0,0.2,0" Height="33"/>
+            <Border BorderBrush="#FF333333" BorderThickness="1">
+                <ScrollViewer CanContentScroll="True" BorderThickness="0.5">
+                    <StackPanel x:Name="ScanStackPanelResult" Height="380" />
+                </ScrollViewer>
+            </Border>
+            <Button x:Name="ScanButtonRepair" Content="Запуск действий" Background="White" Height="40" Click="ScanButtonRepair_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>
