@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:client"
         mc:Ignorable="d"
         Title="Антивирус" 
-        Height="749.2" 
+        Height="783.6" 
         Width="1005.6" 
         Visibility="Visible" 
         ResizeMode="NoResize" 
@@ -14,12 +14,12 @@
 
 
     <Grid Background="#EEF7F7F7" Margin="0">
-        <TabControl HorizontalAlignment="Left" Height="703" VerticalAlignment="Top" Width="999" BorderThickness="0">
+        <TabControl BorderThickness="0" Margin="0,0,0.2,0.4">
             <TabItem Header="Сканирование" Foreground="#FF222831" BorderBrush="{x:Null}" FontSize="14" FontFamily="Dubai" Height="60" Background="{x:Null}" Width="200" BorderThickness="0">
-                <local:Scanner/>
+                <local:Scanner Margin="2,0,0.2,-2" VerticalAlignment="Top" Height="690"/>
             </TabItem>
             <TabItem Header="Мониторинг директории" Foreground="#FF222831" BorderBrush="{x:Null}" FontSize="14" FontFamily="Dubai" Background="{x:Null}" Width="200" Height="60">
-                <local:Monitoring/>
+                <local:Monitoring Margin="0,0,0.2,-1" VerticalAlignment="Top" Height="689"/>
             </TabItem>
             <TabItem BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF222831" FontSize="14" FontFamily="Dubai" Header="Запланировать проверку" Width="200" Height="60">
                 <local:Plans/>

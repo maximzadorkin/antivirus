@@ -44,3 +44,5 @@ C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\bin\Debug\
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\obj\Debug\FilesProcessing.g.cs
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\obj\Debug\FilesProcessing.baml

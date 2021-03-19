@@ -12,9 +12,9 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="7*"/>
         </Grid.ColumnDefinitions>
-        <RadioButton Content="Разрешить" Foreground="#FF4DD0A9" FontFamily="Dubai" IsChecked="True" Grid.Column="0" VerticalAlignment="Center"/>
-        <RadioButton Content="В карантин" Foreground="#FFEBA51D" FontFamily="Dubai" Grid.Column="1" VerticalAlignment="Center" />
-        <RadioButton Content="Удалить" Foreground="#FFFF4343" FontFamily="Dubai" Grid.Column="2" VerticalAlignment="Center" />
+        <RadioButton Content="Разрешить" Foreground="#FF4DD0A9" FontFamily="Dubai" IsChecked="True" Grid.Column="0" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
+        <RadioButton Content="В карантин" Foreground="#FFEBA51D" FontFamily="Dubai" Grid.Column="1" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
+        <RadioButton Content="Удалить" Foreground="#FFFF4343" FontFamily="Dubai" Grid.Column="2" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
         <Label x:Name="label" Content="Label" FontFamily="Dubai" Grid.Column="3" VerticalAlignment="Center" />
     </Grid>
 </UserControl>

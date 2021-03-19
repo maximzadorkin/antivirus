@@ -4,8 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:client"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" Height="572.4">
     <Grid Background="White">
         <StackPanel>
             <Grid>
@@ -18,14 +17,7 @@
                 <Label Content="Просканировано:" HorizontalAlignment="Left" Margin="184,0,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="LabelScanned" Content="..." HorizontalAlignment="Left" VerticalAlignment="Top" Margin="189,20,0,0" />
             </Grid>
-            <Border BorderBrush="#FF333333" BorderThickness="1" Margin="10,10,10,10" Height="252">
-                <ScrollViewer Margin="1.2,0,-0.8,0">
-                    <StackPanel HorizontalAlignment="Left" Height="250" VerticalAlignment="Top" Width="780"/>
-                </ScrollViewer>
-            </Border>
-            <Grid Margin="0,0,10,0">
-                <Button x:Name="ButtonRepair" Content="Запустить действия" Margin="10,0,0,0" Height="35" Background="White"/>
-            </Grid>
+            <local:FilesProcessing Margin="10,0"/>
         </StackPanel>
     </Grid>
 </UserControl>

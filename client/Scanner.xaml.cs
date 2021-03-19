@@ -1,8 +1,10 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
 using System;
 using System.Collections.Generic;
+using System.IO.MemoryMappedFiles;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -23,28 +25,59 @@ namespace client
     {
         private bool isFileScan;
         private string scanPath = "";
+        static int size = 2048;
+        static MemoryMappedFile sharedMemory = MemoryMappedFile.CreateOrOpen("MZAntivirus_commands_fm", size);
+        static MemoryMappedViewAccessor file = sharedMemory.CreateViewAccessor(0, size);
+        static MemoryMappedFile sharedMemoryScanner = MemoryMappedFile.CreateOrOpen("MZAntivirus_scanner_fm", size);
+        static MemoryMappedViewAccessor fileScanner = sharedMemoryScanner.CreateViewAccessor(0, size);
+        static string commandsMutexName = "MZAntivirus_commands_mutex";
+        static Mutex commandsMutex = Mutex.OpenExisting(commandsMutexName);
 
 
         public Scanner()
         {
             InitializeComponent();
-            ScanStackPanelResult.Visibility = Visibility.Hidden;
+            Result.Visibility = Visibility.Hidden;
         }
 
         private void startScan()
         {
-            Label label = (Label)this.ScanStatusBar.Items.GetItemAt(0);
-            ProgressBar progressBar = (ProgressBar)this.ScanStatusBar.Items.GetItemAt(2);
+            Label label = (Label)this.StatusBar.Items.GetItemAt(0);
+            ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
 
-            ScanStackPanelResult.Visibility = Visibility.Visible;
+            
+            Mutex commandsMutex = Mutex.OpenExisting(commandsMutexName);
+            commandsMutex.WaitOne();
+            MessageBox.Show("wait scs");
+            file.Write(0, size);
+            string command = "scan_000_0_c:/";
+            file.WriteArray<char>(4, command.ToCharArray(), 0, command.Length);
+            commandsMutex.ReleaseMutex();
+            //commandsMutex.WaitOne();
+            return;
+            bool exit = false;
+            while (!exit)
+            {
+                string scannerMutexName = "MZAntivirus_scanner_mutex";
+                Mutex scannerMutex = Mutex.OpenExisting(scannerMutexName);
+                scannerMutex.WaitOne();
+                char[] message = new char[size];
+                fileScanner.ReadArray<char>(0, message, 0, size);
+                scannerMutex.ReleaseMutex();
 
-            // logic of scan ScanStackPanelResult.Children.Add(new FileProcessing("path"));
+                string information = message.ToString();
+                if (information.StartsWith("endScan")) exit = true;
+                else label.Content = information;
+            }
+
+            // logic of scan ScanResult.StackPanel.Children.Add(new FileProcessing("path"));
+            Result.Visibility = Visibility.Visible;
         }
 
         private void startRepair()
         {
-            Label label = (Label)this.ScanStatusBar.Items.GetItemAt(0);
-            ProgressBar progressBar = (ProgressBar)this.ScanStatusBar.Items.GetItemAt(2);
+            Label label = (Label)this.StatusBar.Items.GetItemAt(0);
+            ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
         }
 
         private void choosePath(bool isFile)
@@ -52,7 +85,7 @@ namespace client
             string path = openPathDialog(isFile);
             if (path.Length == 0) return;
 
-            ScanLabelSelectedPath.Content = path;
+            LabelSelectedPath.Content = path;
             this.isFileScan = isFile;
             this.scanPath = path;
         }
@@ -74,70 +107,68 @@ namespace client
 
 
 
-        private void ScanButtonChoseFile_Click(object sender, RoutedEventArgs e) { 
+        private void ButtonChoseFile_Click(object sender, RoutedEventArgs e) { 
             this.choosePath(true);
-            this.ScanButtonPower.IsEnabled = true;
-            this.ScanStatusBar.Visibility = Visibility.Hidden;
+            this.ButtonPower.IsEnabled = true;
         }
 
-        private void ScanButtonChoseDir_Click(object sender, RoutedEventArgs e) { 
+        private void ButtonChoseDir_Click(object sender, RoutedEventArgs e) { 
             this.choosePath(false);
-            this.ScanButtonPower.IsEnabled = true;
-            this.ScanStatusBar.Visibility = Visibility.Hidden;
+            this.ButtonPower.IsEnabled = true;
         }
 
-        private void ScanButtonPower_Click(object sender, RoutedEventArgs e)
+        private void ButtonPower_Click(object sender, RoutedEventArgs e)
         {
             string startScan = "Начать сканирование";
             string stopScan = "Остановить сканирование";
 
-            bool isStart = (string)ScanButtonPower.Content == startScan;
+            bool isStart = (string)ButtonPower.Content == startScan;
             if (isStart)
             {
-                Label label = (Label)this.ScanStatusBar.Items.GetItemAt(0);
-                ProgressBar progressBar = (ProgressBar)this.ScanStatusBar.Items.GetItemAt(2);
+                Label label = (Label)this.StatusBar.Items.GetItemAt(0);
+                ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
                 label.Content = "Сканирование началось...";
                 progressBar.Value = 1;
                 
-                this.ScanButtonPower.Content = stopScan;
+                this.ButtonPower.Content = stopScan;
 
-                ScanStackPanelResult.Children.Clear();
-                ScanLabelResult.Content = "";
-                this.ScanButtonRepair.IsEnabled = false;
+                Result.StackPanel.Children.Clear();
+                Result.Label.Content = "";
+                Result.ButtonRepair.IsEnabled = false;
 
                 this.startScan();
             } else
             {
-                Label label = (Label)this.ScanStatusBar.Items.GetItemAt(0);
-                ProgressBar progressBar = (ProgressBar)this.ScanStatusBar.Items.GetItemAt(2);
+                Label label = (Label)this.StatusBar.Items.GetItemAt(0);
+                ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
                 label.Content = "";
                 progressBar.Value = 0;
 
-                this.ScanButtonPower.Content = startScan;
+                this.ButtonPower.Content = startScan;
 
-                this.ScanButtonRepair.IsEnabled = true;
+                Result.ButtonRepair.IsEnabled = true;
             }
         }
 
-        private void ScanButtonRepair_Click(object sender, RoutedEventArgs e)
+        private void ButtonRepair_Click(object sender, RoutedEventArgs e)
         {
-            this.ScanButtonChoseFile.IsEnabled = false;
-            this.ScanButtonChoseDir.IsEnabled = false;
-            this.ScanButtonPower.IsEnabled = false;
-            this.ScanButtonRepair.IsEnabled = false;
+            this.ButtonChoseFile.IsEnabled = false;
+            this.ButtonChoseDir.IsEnabled = false;
+            this.ButtonPower.IsEnabled = false;
+            Result.ButtonRepair.IsEnabled = false;
 
 
-            Label label = (Label)this.ScanStatusBar.Items.GetItemAt(0);
-            ProgressBar progressBar = (ProgressBar)this.ScanStatusBar.Items.GetItemAt(2);
+            Label label = (Label)this.StatusBar.Items.GetItemAt(0);
+            ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
             label.Content = "Выполнение...";
             progressBar.Value = 1;
 
             this.startRepair();
 
 
-            this.ScanButtonChoseFile.IsEnabled = true;
-            this.ScanButtonChoseDir.IsEnabled = true;
-            this.ScanButtonPower.IsEnabled = true;
+            this.ButtonChoseFile.IsEnabled = true;
+            this.ButtonChoseDir.IsEnabled = true;
+            this.ButtonPower.IsEnabled = true;
         }
     }
 }

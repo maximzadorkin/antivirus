@@ -20,11 +20,29 @@ namespace client
     /// </summary>
     public partial class FileProcessing : UserControl
     {
+        public string selectedCommand = "000";
 
         public FileProcessing(string filepath)
         {
             InitializeComponent();
             label.Content = filepath;
+        }
+
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        {
+            RadioButton rbtn = (RadioButton)e.Source;
+            switch (rbtn.Content)
+            {
+                default:
+                    selectedCommand = "000";
+                    return;
+                case "В карантин":
+                    selectedCommand = "001";
+                    return;
+                case "Удалить":
+                    selectedCommand = "002";
+                    return;
+            }
         }
     }
 }

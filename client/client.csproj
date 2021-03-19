@@ -79,6 +79,9 @@
     <Compile Include="FileProcessing.xaml.cs">
       <DependentUpon>FileProcessing.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FilesProcessing.xaml.cs">
+      <DependentUpon>FilesProcessing.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Monitoring.xaml.cs">
       <DependentUpon>Monitoring.xaml</DependentUpon>
     </Compile>
@@ -89,6 +92,10 @@
       <DependentUpon>Scanner.xaml</DependentUpon>
     </Compile>
     <Page Include="FileProcessing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FilesProcessing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

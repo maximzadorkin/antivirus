@@ -1,0 +1,7 @@
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\AntService\bin\Debug\AntService.exe.config
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\AntService\bin\Debug\AntService.exe
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\AntService\bin\Debug\AntService.pdb
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\AntService\obj\Debug\AntService.csprojAssemblyReference.cache
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\AntService\obj\Debug\AntService.csproj.CoreCompileInputs.cache
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\AntService\obj\Debug\AntService.exe
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\AntService\obj\Debug\AntService.pdb
