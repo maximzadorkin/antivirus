@@ -1,9 +1,12 @@
 ﻿
 
-FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\FileProcessing.xaml;;
+FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Controls\Processing\FileProcessing.xaml;;
+FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Controls\Processing\FilesProcessing.xaml;;
 FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\MainWindow.xaml;;
-FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Monitoring.xaml;;
-FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Plans.xaml;;
-FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Scanner.xaml;;
-FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\FilesProcessing.xaml;;
+FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Controls\Monitoring.xaml;;
+FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Controls\Plans.xaml;;
+FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Controls\Quarantine\Quarantine.xaml;;
+FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Controls\Quarantine\QuarantineItem.xaml;;
+FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Controls\Scanner.xaml;;
+FC:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\Controls\UI\Button.xaml;;
 

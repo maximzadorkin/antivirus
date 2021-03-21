@@ -76,26 +76,36 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="FileProcessing.xaml.cs">
+    <Compile Include="Controls\Processing\FileProcessing.xaml.cs">
       <DependentUpon>FileProcessing.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FilesProcessing.xaml.cs">
+    <Compile Include="Controls\Processing\FilesProcessing.xaml.cs">
       <DependentUpon>FilesProcessing.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Monitoring.xaml.cs">
+    <Compile Include="Controls\Monitoring.xaml.cs">
       <DependentUpon>Monitoring.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Plans.xaml.cs">
+    <Compile Include="Controls\Plans.xaml.cs">
       <DependentUpon>Plans.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Scanner.xaml.cs">
+    <Compile Include="Controls\Quarantine\Quarantine.xaml.cs">
+      <DependentUpon>Quarantine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Quarantine\QuarantineItem.xaml.cs">
+      <DependentUpon>QuarantineItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Scanner.xaml.cs">
       <DependentUpon>Scanner.xaml</DependentUpon>
     </Compile>
-    <Page Include="FileProcessing.xaml">
+    <Page Include="Controls\Processing\FileProcessing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FilesProcessing.xaml">
+    <Page Include="Controls\Processing\FilesProcessing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\UI\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -107,19 +117,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\UI\Button.xaml.cs">
+      <DependentUpon>Button.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Monitoring.xaml">
+    <Page Include="Controls\Monitoring.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Plans.xaml">
+    <Page Include="Controls\Plans.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Scanner.xaml">
+    <Page Include="Controls\Quarantine\Quarantine.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Quarantine\QuarantineItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Scanner.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -6,23 +6,73 @@
         xmlns:local="clr-namespace:client"
         mc:Ignorable="d"
         Title="Антивирус" 
-        Height="783.6" 
+        Height="800.4" 
         Width="1005.6" 
         Visibility="Visible" 
         ResizeMode="NoResize" 
-        WindowStartupLocation="CenterScreen" SnapsToDevicePixels="True">
+        WindowStartupLocation="CenterScreen" 
+        SnapsToDevicePixels="True"
+>
 
 
-    <Grid Background="#EEF7F7F7" Margin="0">
-        <TabControl BorderThickness="0" Margin="0,0,0.2,0.4">
-            <TabItem Header="Сканирование" Foreground="#FF222831" BorderBrush="{x:Null}" FontSize="14" FontFamily="Dubai" Height="60" Background="{x:Null}" Width="200" BorderThickness="0">
-                <local:Scanner Margin="2,0,0.2,-2" VerticalAlignment="Top" Height="690"/>
+    <Grid Background="#FFE8E8E8" Margin="0">
+        <TabControl BorderThickness="0" Margin="0,0,0.2,0.4" Background="#FF141414">
+            <TabItem 
+                Header="Сканирование" 
+                Foreground="#FF222831" 
+                BorderBrush="{x:Null}" 
+                FontSize="14" 
+                FontFamily="Dubai" 
+                Height="60" 
+                Background="{x:Null}" 
+                Width="200" 
+                BorderThickness="0"
+            >
+                <local:Scanner
+                    Margin="0" Height="Auto" 
+                />
             </TabItem>
-            <TabItem Header="Мониторинг директории" Foreground="#FF222831" BorderBrush="{x:Null}" FontSize="14" FontFamily="Dubai" Background="{x:Null}" Width="200" Height="60">
-                <local:Monitoring Margin="0,0,0.2,-1" VerticalAlignment="Top" Height="689"/>
+            <TabItem 
+                Header="Мониторинг директории" 
+                Foreground="#FF222831" 
+                BorderBrush="{x:Null}" 
+                FontSize="14" 
+                FontFamily="Dubai" 
+                Background="{x:Null}" 
+                Width="200" 
+                Height="60"
+            >
+                <local:Monitoring 
+                    Margin="0" 
+                />
             </TabItem>
-            <TabItem BorderBrush="{x:Null}" Background="{x:Null}" Foreground="#FF222831" FontSize="14" FontFamily="Dubai" Header="Запланировать проверку" Width="200" Height="60">
-                <local:Plans/>
+            <TabItem 
+                BorderBrush="{x:Null}" 
+                Background="{x:Null}" 
+                Foreground="#FF222831" 
+                FontSize="14" 
+                FontFamily="Dubai" 
+                Header="Запланировать проверку" 
+                Width="200" Height="60"
+            >
+                <local:Plans 
+                    Margin="0" 
+                />
+            </TabItem>
+            <TabItem 
+                Header="Карантин" 
+                Foreground="#FF222831" 
+                BorderBrush="{x:Null}" 
+                FontSize="14" 
+                FontFamily="Dubai" 
+                Height="60" 
+                Background="{x:Null}" 
+                Width="200" 
+                BorderThickness="0"
+            >
+                <local:Quarantine 
+                    Margin="0"     
+                />
             </TabItem>
         </TabControl>
     </Grid>
