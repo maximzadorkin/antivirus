@@ -1,0 +1,6 @@
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\ServiceDll.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\ServiceDll.pdb
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.csprojAssemblyReference.cache
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.csproj.CoreCompileInputs.cache
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.pdb

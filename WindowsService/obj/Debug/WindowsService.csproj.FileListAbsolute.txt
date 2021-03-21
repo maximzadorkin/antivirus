@@ -1,0 +1,12 @@
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe.config
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.pdb
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\ServiceDll.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\ServiceDll.pdb
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\obj\Debug\WindowsService.csprojAssemblyReference.cache
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\obj\Debug\WindowsService.AntivirusServiceInstaller.resources
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\obj\Debug\WindowsService.csproj.GenerateResource.cache
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\obj\Debug\WindowsService.csproj.CoreCompileInputs.cache
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\obj\Debug\WindowsService.csproj.CopyComplete
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\obj\Debug\WindowsService.exe
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\obj\Debug\WindowsService.pdb

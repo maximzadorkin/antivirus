@@ -1,0 +1,90 @@
+﻿Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба WindowsServiceHostForMyService...
+Создается исходный EventLog WindowsServiceHostForMyService в журнале Application...
+Выполняется откат для сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Восстанавливается исходное состояние журнала событий для источника WindowsServiceHostForMyService.
+При выполнении программы установки System.Diagnostics.EventLogInstaller на этапе отката возникло исключение.
+System.Security.SecurityException: Источник не найден, но не удалось выполнить поиск по нескольким или всем журналам событий.  Недоступные журналы: Security, State.
+На этапе отката процедуры установки возникло исключение. Это исключение будет проигнорировано, и откат будет продолжен. Однако после завершения отката компьютер может не вернуться полностью в исходное состояние.
+Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба WindowsServiceHostForMyService...
+Создается исходный EventLog WindowsServiceHostForMyService в журнале Application...
+Выполняется откат для сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Восстанавливается исходное состояние журнала событий для источника WindowsServiceHostForMyService.
+При выполнении программы установки System.Diagnostics.EventLogInstaller на этапе отката возникло исключение.
+System.Security.SecurityException: Источник не найден, но не удалось выполнить поиск по нескольким или всем журналам событий.  Недоступные журналы: Security, State.
+На этапе отката процедуры установки возникло исключение. Это исключение будет проигнорировано, и откат будет продолжен. Однако после завершения отката компьютер может не вернуться полностью в исходное состояние.
+Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба WindowsServiceHostForMyService...
+Служба WindowsServiceHostForMyService успешно установлена.
+Создается исходный EventLog WindowsServiceHostForMyService в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба AntivirusZM...
+Создается исходный EventLog AntivirusZM в журнале Application...
+Выполняется откат для сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Восстанавливается исходное состояние журнала событий для источника AntivirusZM.
+При выполнении программы установки System.Diagnostics.EventLogInstaller на этапе отката возникло исключение.
+System.Security.SecurityException: Источник не найден, но не удалось выполнить поиск по нескольким или всем журналам событий.  Недоступные журналы: Security, State.
+На этапе отката процедуры установки возникло исключение. Это исключение будет проигнорировано, и откат будет продолжен. Однако после завершения отката компьютер может не вернуться полностью в исходное состояние.
+Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба AntivirusZM...
+Создается исходный EventLog AntivirusZM в журнале Application...
+Выполняется откат для сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Восстанавливается исходное состояние журнала событий для источника AntivirusZM.
+При выполнении программы установки System.Diagnostics.EventLogInstaller на этапе отката возникло исключение.
+System.Security.SecurityException: Источник не найден, но не удалось выполнить поиск по нескольким или всем журналам событий.  Недоступные журналы: Security, State.
+На этапе отката процедуры установки возникло исключение. Это исключение будет проигнорировано, и откат будет продолжен. Однако после завершения отката компьютер может не вернуться полностью в исходное состояние.
+Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба AntivirusZM...
+Служба AntivirusZM успешно установлена.
+Создается исходный EventLog AntivirusZM в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
