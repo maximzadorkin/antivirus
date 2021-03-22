@@ -52,11 +52,11 @@ namespace client
 
                 client.ClientCredentials.Windows.ClientCredential.Domain = "";
 
-                string test = client.Method1("test");
+                //string test = client.Method1("test");
 
-                if (test.Length < 1) {
-                    throw new Exception("Проверка соединения не удалась");
-                }
+                //if (test.Length < 1) {
+                //    throw new Exception("Проверка соединения не удалась");
+                //}
             }
             catch (Exception _ex)
             {
@@ -64,6 +64,71 @@ namespace client
                 return false;
             }
             return true;
+        }
+
+        private void SetVisibilityMainWindow(bool visibility)
+        {
+            if (visibility)
+            {
+                this.ButtonScanner.Visibility = Visibility.Visible;
+                this.ButtonMonitoring.Visibility = Visibility.Visible;
+                this.ButtonPlans.Visibility = Visibility.Visible;
+                this.ButtonQuarantine.Visibility = Visibility.Visible;
+            } else
+            {
+                this.ButtonScanner.Visibility = Visibility.Hidden;
+                this.ButtonMonitoring.Visibility = Visibility.Hidden;
+                this.ButtonPlans.Visibility = Visibility.Hidden;
+                this.ButtonQuarantine.Visibility = Visibility.Hidden;
+            }
+        }
+
+        private void HiddenAllControls()
+        {
+            this.WindowScanner.Visibility = Visibility.Hidden;
+            this.WindowMonitoring.Visibility = Visibility.Hidden;
+            this.WindowPlans.Visibility = Visibility.Hidden;
+            this.WindowQuarantine.Visibility = Visibility.Hidden;
+        }
+
+        private void ButtonScanner_Click(object sender, RoutedEventArgs e)
+        {
+            this.SetVisibilityMainWindow(false);
+            this.NavigationPanel.Visibility = Visibility.Visible;
+            this.WindowScanner.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonMonitoring_Click(object sender, RoutedEventArgs e)
+        {
+            this.SetVisibilityMainWindow(false);
+            this.NavigationPanel.Visibility = Visibility.Visible;
+            this.WindowMonitoring.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonPlans_Click(object sender, RoutedEventArgs e)
+        {
+            this.SetVisibilityMainWindow(false);
+            this.NavigationPanel.Visibility = Visibility.Visible;
+            this.WindowPlans.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonQuarantine_Click(object sender, RoutedEventArgs e)
+        {
+            this.SetVisibilityMainWindow(false);
+            this.NavigationPanel.Visibility = Visibility.Visible;
+            this.WindowQuarantine.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonBack_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationPanel.Visibility = Visibility.Hidden;
+            this.HiddenAllControls();
+            this.SetVisibilityMainWindow(true);
+        }
+
+        private void ButtonCloseApp_Click(object sender, RoutedEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
 }

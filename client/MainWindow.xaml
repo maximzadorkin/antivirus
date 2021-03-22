@@ -11,69 +11,142 @@
         Visibility="Visible" 
         ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
-        SnapsToDevicePixels="True"
+        SnapsToDevicePixels="True" WindowStyle="ToolWindow"
 >
+    <Window.Resources>
+        <Style x:Key="StartButton">
+            <Setter Property="Control.Width" Value="200" />
+            <Setter Property="Control.Height" Value="200" />
+            <Setter Property="Control.Margin" Value="20" />
+            <Setter Property="Control.FontFamily" Value="Verdana" />
+            <Setter Property="Control.FontSize" Value="16" />
+            <Setter Property="Control.BorderBrush" Value="{x:Null}" />
+            <Setter Property="Control.Background" Value="#FF232323" />
+            <Setter Property="Control.Foreground" Value="#E8E8E8" />
+            <Setter Property="Control.Cursor" Value="Hand" />
+        </Style>
+    </Window.Resources>
 
-
-    <Grid Background="#FFE8E8E8" Margin="0">
-        <TabControl BorderThickness="0" Margin="0,0,0.2,0.4" Background="#FF141414">
-            <TabItem 
-                Header="Сканирование" 
-                Foreground="#FF222831" 
-                BorderBrush="{x:Null}" 
-                FontSize="14" 
-                FontFamily="Dubai" 
-                Height="60" 
-                Background="{x:Null}" 
-                Width="200" 
-                BorderThickness="0"
+    <Grid Background="#1C1C1C" Margin="0">
+        <StackPanel 
+            Orientation="Horizontal" 
+            HorizontalAlignment="Center" 
+            VerticalAlignment="Center"
+        >
+            <StackPanel>
+                <Button 
+                    x:Name="ButtonScanner"
+                    
+                    Click="ButtonScanner_Click"
+                    Style="{StaticResource StartButton}"
+                >
+                    <Grid Height="100">
+                        <Image 
+                            Source="icon-scanner.png" 
+                            Width="50" 
+                            Height="50" 
+                            VerticalAlignment="Top" 
+                        />
+                        <TextBlock VerticalAlignment="Bottom" Text="Сканирование" />
+                    </Grid>
+                </Button>
+                <Button 
+                    x:Name="ButtonMonitoring" 
+                    Style="{StaticResource StartButton}"
+                    Click="ButtonMonitoring_Click"
+                >
+                    <Grid Height="100">
+                        <Image 
+                            Source="icon-monitoring.png" 
+                            Width="50" 
+                            Height="50" 
+                            VerticalAlignment="Top" 
+                        />
+                        <TextBlock VerticalAlignment="Bottom" Text="Мониторинг" />
+                    </Grid>
+                </Button>
+            </StackPanel>
+            <StackPanel>
+                <Button 
+                    x:Name="ButtonPlans"
+                    Style="{StaticResource StartButton}"
+                    Click="ButtonPlans_Click"
+                >
+                    <Grid Height="100">
+                        <Image 
+                            Source="/icon-plans.png"
+                            Width="50" 
+                            Height="50" 
+                            VerticalAlignment="Top" 
+                        />
+                        <TextBlock VerticalAlignment="Bottom" Text="Планы проверок" />
+                    </Grid>
+                </Button>
+                <Button 
+                    x:Name="ButtonQuarantine"
+                    Style="{StaticResource StartButton}"
+                    Click="ButtonQuarantine_Click"
+                >
+                    <Grid Height="100">
+                        <Image 
+                            Source="icon-quarantine.png" 
+                            Width="50" 
+                            Height="50" 
+                            VerticalAlignment="Top" 
+                        />
+                        <TextBlock VerticalAlignment="Bottom" Text="Карантин" />
+                    </Grid>
+                </Button>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel>
+            <Border x:Name="NavigationPanel" 
+                BorderThickness="0,0,0,0.5" 
+                BorderBrush="#E8E8E8"
+                Visibility="Hidden"
             >
-                <local:Scanner
-                    Margin="0" Height="Auto" 
+                <Grid Background="#FF232323">
+                    <Button x:Name="ButtonBack" 
+                        Width="200" 
+                        Height="35" 
+                        Content="На главную"
+                        BorderBrush="{x:Null}"
+                        Background="{x:Null}"
+                        Foreground="White"
+                        FontFamily="Verdana"
+                        FontSize="16"
+                        Cursor="Hand" 
+                        HorizontalAlignment="Left"
+                        Click="ButtonBack_Click"
+                    />
+                </Grid>
+            </Border>
+            <Grid>
+                <local:Scanner x:Name="WindowScanner" 
+                    Width="Auto" 
+                    Height="Auto" 
+                    VerticalAlignment="Center"
+                    Visibility="Hidden"
                 />
-            </TabItem>
-            <TabItem 
-                Header="Мониторинг директории" 
-                Foreground="#FF222831" 
-                BorderBrush="{x:Null}" 
-                FontSize="14" 
-                FontFamily="Dubai" 
-                Background="{x:Null}" 
-                Width="200" 
-                Height="60"
-            >
-                <local:Monitoring 
-                    Margin="0" 
+                <local:Monitoring x:Name="WindowMonitoring" 
+                    Width="Auto" 
+                    Height="Auto" 
+                    VerticalAlignment="Center"
+                    Visibility="Hidden" 
                 />
-            </TabItem>
-            <TabItem 
-                BorderBrush="{x:Null}" 
-                Background="{x:Null}" 
-                Foreground="#FF222831" 
-                FontSize="14" 
-                FontFamily="Dubai" 
-                Header="Запланировать проверку" 
-                Width="200" Height="60"
-            >
-                <local:Plans 
-                    Margin="0" 
+                <local:Plans x:Name="WindowPlans" 
+                    Width="Auto" 
+                    Height="Auto" 
+                    VerticalAlignment="Center"
+                    Visibility="Hidden"
                 />
-            </TabItem>
-            <TabItem 
-                Header="Карантин" 
-                Foreground="#FF222831" 
-                BorderBrush="{x:Null}" 
-                FontSize="14" 
-                FontFamily="Dubai" 
-                Height="60" 
-                Background="{x:Null}" 
-                Width="200" 
-                BorderThickness="0"
-            >
-                <local:Quarantine 
-                    Margin="0"     
+                <local:Quarantine x:Name="WindowQuarantine" 
+                    Width="Auto" 
+                    Height="Auto" 
+                    VerticalAlignment="Center"
+                    Visibility="Hidden"
                 />
-            </TabItem>
-        </TabControl>
+            </Grid>
+        </StackPanel>
     </Grid>
 </Window>

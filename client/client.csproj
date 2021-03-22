@@ -174,5 +174,17 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon-scanner.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon-monitoring.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon-quarantine.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="icon-plans.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

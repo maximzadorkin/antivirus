@@ -23,9 +23,7 @@ namespace client
     /// </summary>
     public partial class Scanner : UserControl
     {
-        private bool isFileScan;
         private string scanPath = "";
-        static int size = 2048;
 
 
         public Scanner()
@@ -49,14 +47,14 @@ namespace client
             ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
         }
 
-        private void choosePath(bool isFile)
+        private bool choosePath(bool isFile)
         {
             string path = openPathDialog(isFile);
-            if (path.Length == 0) return;
+            if (path.Length == 0) return false;
 
             LabelSelectedPath.Content = path;
-            this.isFileScan = isFile;
             this.scanPath = path;
+            return true;
         }
 
         private string openPathDialog(bool isFile)
@@ -77,13 +75,15 @@ namespace client
 
 
         private void ButtonChoseFile_Click(object sender, RoutedEventArgs e) { 
-            this.choosePath(true);
-            this.ButtonPower.IsEnabled = true;
+            bool isChoosed = this.choosePath(true);
+            if (isChoosed)
+                this.ButtonPower.IsEnabled = true;
         }
 
-        private void ButtonChoseDir_Click(object sender, RoutedEventArgs e) { 
-            this.choosePath(false);
-            this.ButtonPower.IsEnabled = true;
+        private void ButtonChoseDir_Click(object sender, RoutedEventArgs e) {
+            bool isChoosed = this.choosePath(false);
+            if (isChoosed)
+                this.ButtonPower.IsEnabled = true;
         }
 
         private void ButtonPower_Click(object sender, RoutedEventArgs e)

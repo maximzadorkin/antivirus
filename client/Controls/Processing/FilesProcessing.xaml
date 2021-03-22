@@ -16,13 +16,14 @@
             <Button 
                 x:Name="ButtonRepair" 
                 Content="Запуск действий" 
-                Background="#FF6600" 
+                Background="#FF00B1FF" 
                 Foreground="#FFFFFF"
                 FontFamily="Verdana" 
                 FontSize="14"
                 Height="40" 
                 Padding="0" 
                 BorderBrush="{x:Null}"
+                Cursor="Hand"
                 Click="ButtonRepair_Click" 
             />
         </StackPanel>

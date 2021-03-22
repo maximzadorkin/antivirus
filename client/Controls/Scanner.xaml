@@ -14,10 +14,11 @@
             Width="200" 
             Height="50" 
             BorderBrush="{x:Null}" 
-            Background="#FFFF6600" 
+            Background="#FF232323" 
             Foreground="White" 
             FontFamily="Verdana" 
             FontSize="16"  
+            Cursor="Hand" 
             Content="Выбрать файл" 
             x:Name="ButtonChoseFile" 
             Click="ButtonChoseFile_Click" 
@@ -31,10 +32,11 @@
             Width="200" 
             Height="50" 
             BorderBrush="{x:Null}" 
-            Background="#FFFF6600" 
+            Background="#FF232323" 
             Foreground="White" 
             FontFamily="Verdana" 
-            FontSize="16"  
+            FontSize="16"   
+            Cursor="Hand"
             Click="ButtonChoseDir_Click"
         />
         <Label 
@@ -60,12 +62,13 @@
             Margin="10,65,0,0" 
             Width="975" 
             Height="50" 
-            IsEnabled="True" 
+            IsEnabled="False" 
             BorderBrush="{x:Null}" 
-            Background="#FFFF6600" 
-            Foreground="White" 
+            Background="#FF4DD0A9" 
+            Foreground="#FFF4F4F4" 
             FontFamily="Verdana" 
-            FontSize="16"  
+            FontSize="16"   
+            Cursor="Hand"
             Click="ButtonPower_Click"
         />
         <StatusBar 
@@ -80,7 +83,7 @@
             Background="{x:Null}" 
         >
             <Label 
-                Foreground="#FF393E46" 
+                Foreground="#FFF0F0F0" 
                 FontFamily="Dubai" 
                 Height="40" 
                 Width="480"
