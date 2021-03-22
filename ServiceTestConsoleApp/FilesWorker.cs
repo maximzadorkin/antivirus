@@ -5,12 +5,12 @@ namespace ServiceTestConsoleApp
 {
     class FilesWorker
     {
-        static public bool addFileToQuarantine(string fileName)
+        static public bool addFileToQuarantine(string filePath)
         {
             return true;
         }
 
-        static public bool removeFileFromQuarantine(string fileName)
+        static public bool removeFileFromQuarantine(string filePath)
         {
             return true;
         }

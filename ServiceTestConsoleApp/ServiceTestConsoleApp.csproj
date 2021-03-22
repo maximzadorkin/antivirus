@@ -82,6 +82,7 @@
     <Compile Include="VirusDS.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AntivirusZM.db" />
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>

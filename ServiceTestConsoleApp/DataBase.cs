@@ -1,17 +1,19 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace ServiceTestConsoleApp
 {
     class DataBase
     {
-        private string source = "";
+        private string source = $"{Directory.GetCurrentDirectory()}\\AntivirusZM.db";
         public List<VirusDS> getViruses(string signature, int position)
         {
+            Console.WriteLine(this.source);
+            List<VirusDS> viruses = new List<VirusDS>();
             SqliteConnection connection = new SqliteConnection("Data Source=" + this.source);
             connection.Open();
-            List<VirusDS> viruses = new List<VirusDS>();
             var command = connection.CreateCommand();
             command.CommandText = $"SELECT * FROM Viruses WHERE Signature Like '{signature}%' AND OffsetBegin <= {position} AND OffsetEnd >= {position}";
 
@@ -25,7 +27,7 @@ namespace ServiceTestConsoleApp
                             reader.GetString(2),
                             Int32.Parse(reader.GetString(3)),
                             Int32.Parse(reader.GetString(4))
-                        );
+                    );
                     viruses.Add(virus);
 
                 }

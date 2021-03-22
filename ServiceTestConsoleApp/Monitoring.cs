@@ -7,9 +7,7 @@ namespace ServiceTestConsoleApp
 {
     class Monitoring
     {
-        static bool created = false;
         static private bool alreadyRun = false;
-        static private string path;
 
         static private FileSystemWatcher watcher;
         static private List<string> dangerFiles;
@@ -21,7 +19,6 @@ namespace ServiceTestConsoleApp
 
             Monitoring.dangerFiles = new List<string>();
 
-            Monitoring.path = path;
             Monitoring.watcher = new FileSystemWatcher();
             Monitoring.watcher.Path = path;
             Monitoring.watcher.NotifyFilter = NotifyFilters.LastWrite;
@@ -42,13 +39,20 @@ namespace ServiceTestConsoleApp
         {
             string path = e.FullPath;
             Thread.Sleep(3000);
+            Console.WriteLine("check " + path);
+            bool isFile = File.Exists(path);
+            if (!isFile) return;
+
             DangersDetection detection = new DangersDetection();
             bool isDangerFile = detection.detectDanger(path);
 
-            if (isDangerFile) return; //!isDangerFile
+            if (!isDangerFile) return;
 
-            Monitoring.dangerFiles.Add(path);
-            Monitoring.logger();
+            bool isContained = Monitoring.dangerFiles.Contains(path);
+            if (!isContained) {
+                Monitoring.dangerFiles.Add(path);
+                Monitoring.logger();
+            }
             // работа с zip
         }
 
@@ -60,7 +64,6 @@ namespace ServiceTestConsoleApp
             {
                 TEXT_PathOfDangersFiles += $"{path}\n";
             }
-            TEXT_PathOfDangersFiles = TEXT_PathOfDangersFiles.Substring(0, TEXT_PathOfDangersFiles.Length - 1);
             string TEXT_Result = $"{TEXT_DetectedDangers}\n{TEXT_PathOfDangersFiles}";
             Console.WriteLine(TEXT_Result);
             // отправлять данные на клиент

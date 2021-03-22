@@ -6,22 +6,22 @@ namespace ServiceTestConsoleApp
 {
     class Scanner
     {
-        static bool created = false;
-        static bool scanning = false;
+        static private bool scanning = false;
 
         public string pathName;
         public bool isFile;
         private bool needScanLogger;
 
         private string[] entries;
-        private List<FileDS> filesForScan = new List<FileDS>();
+        private List<FileDS> filesForScan;
 
-        public void startScanner(string path, bool needScanLogger = false)
+        public bool startScanner(string path, bool needScanLogger = false)
         {
-            if (Scanner.created) return;
+            if (Scanner.scanning) return false;
             this.pathName = path;
             this.isFile = File.Exists(path);
             this.needScanLogger = needScanLogger;
+            this.filesForScan = new List<FileDS>();
 
             Scanner.scanning = true;
 
@@ -30,7 +30,11 @@ namespace ServiceTestConsoleApp
                 this.filesForScan.Add(new FileDS(this.pathName));
             else
                 this.folderScanner(this.pathName);
+
             this.filesScanner();
+
+            this.stopScanner();
+            return true;
         }
 
         public void stopScanner()

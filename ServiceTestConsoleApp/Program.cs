@@ -8,7 +8,6 @@ namespace ServiceTestConsoleApp
         {   
             string foldername = "C:\\Users\\maxim\\Desktop\\Университет\\scaner\\realy";
             Scanner scanner =  new Scanner();
-            Monitoring monitoring;
 
 
             string input = Console.ReadLine();
@@ -19,13 +18,23 @@ namespace ServiceTestConsoleApp
                     case "startScanner":
                         scanner.startScanner(foldername, true);
                         break;
+                    case "startScanner2":
+                        scanner.startScanner(foldername, true);
+                        scanner.startScanner(foldername, true);
+                        break;
                     case "stopScanner":
                         scanner.stopScanner();
                         Console.WriteLine(scanner.getScanResult());
                         break;
                     case "startMonitoring":
+                        Monitoring.startMonitoring(foldername);
+                        break;
+                    case "startMonitoring2":
+                        Monitoring.startMonitoring(foldername);
+                        Monitoring.startMonitoring(foldername + "\\papka");
                         break;
                     case "stopMonitoring":
+                        Monitoring.stopMonitoring();
                         break;
                     case "addPlan":
                         break;

@@ -7,6 +7,7 @@ namespace ServiceTestConsoleApp
 {
     class DangersDetection
     {
+
         static public string SupportedExtensions { 
             get { return "*.exe,*.elf,*.zip"; }
             private set { SupportedExtensions = value; }
@@ -14,21 +15,21 @@ namespace ServiceTestConsoleApp
 
         public bool detectDanger(string filePath)
         {
-            FileStream stream = this.getFileStream(filePath);
-            if (stream == null) return false;
+            FileStream file = this.getFileStream(filePath);
+            if (file == null) return false;
 
-            bool isExecutableOrZip = this.isExecutableOrZip(filePath, stream);
+            bool isExecutableOrZip = this.isExecutableOrZip(filePath, file);
             bool isDanger = false;
             if (isExecutableOrZip)
-                isDanger = this.verifyFileStream(stream, filePath);
+                isDanger = this.verifyFileStream(file, filePath);
 
+            file.Close();
             return isDanger;
         }
 
         private bool isExecutableOrZip(string path, Stream file)
         {
             bool result = false;
-            
             if (file.Length == 0) return result;
 
             switch ((char)file.ReadByte())
@@ -50,7 +51,7 @@ namespace ServiceTestConsoleApp
                 default:
                     break;
             }
-            file.Close();
+
             return result;
         }
 
@@ -58,13 +59,8 @@ namespace ServiceTestConsoleApp
         {
             try
             {
-                //using (
-                FileStream stream = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                    //)
-                //{
-                    Console.WriteLine("success" + path);
-                    return stream;
-                //}
+                FileStream stream = new FileStream(path, FileMode.Open, FileAccess.ReadWrite, FileShare.ReadWrite);
+                return stream;
             }
             catch (IOException)
             {
@@ -77,6 +73,8 @@ namespace ServiceTestConsoleApp
             int offset = 0;
             bool isDanger = false;
             byte[] data = this.getFileCode(stream, ref offset);
+            if (data == null) return isDanger;
+            
             DataBase db = new DataBase();
             for (int i = 0; i < data.Length - 4 && !isDanger; i++)
             {
@@ -95,7 +93,7 @@ namespace ServiceTestConsoleApp
             return isDanger;
         }
 
-        private byte[] getFileCode(Stream stream, ref int offset)
+        private byte[] getFileCode(Stream stream, ref int offset) // return byte[] or null
         {
             bool textIsFound = false;
             while (!textIsFound)
@@ -107,12 +105,17 @@ namespace ServiceTestConsoleApp
                             (char)stream.ReadByte() == 'e' &&
                             (char)stream.ReadByte() == 'x' &&
                             (char)stream.ReadByte() == 't')
+                        {
                             textIsFound = true;
-                        break;
+                            break;
+                        }
+                        continue;
                     default:
                         break;
                 }
+                if (stream.Position == stream.Length - 1) return null;
             }
+
             stream.Position += 10; // stream to rawDataSize
 
             byte[] array = new byte[4];
@@ -130,7 +133,6 @@ namespace ServiceTestConsoleApp
             stream.Position = rawDataPosition;
             stream.Read(array, 0, rawDataSize - 1); // read to array
             stream.Close();
-
             return array;
         }
 
