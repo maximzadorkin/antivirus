@@ -20,7 +20,12 @@ namespace ServiceTestConsoleApp
             List<VirusDS> viruses = new List<VirusDS>();
             connection.Open();
             var command = connection.CreateCommand();
-            command.CommandText = $"SELECT * FROM Viruses WHERE Signature Like '{signature}%' AND OffsetBegin <= {position} AND OffsetEnd >= {position}";
+            command.CommandText = $@"
+                SELECT * FROM viruses 
+                    WHERE Signature Like '{signature}%' 
+                                AND OffsetBegin <= {position} 
+                                AND OffsetEnd >= {position}
+            ";
 
             using (var reader = command.ExecuteReader())
             {
@@ -46,15 +51,16 @@ namespace ServiceTestConsoleApp
             connection.Open();
             List<PlanDS> plans = new List<PlanDS>();
             var command = connection.CreateCommand();
-            command.CommandText = $"SELECT * FROM Plans";
+            command.CommandText = $"SELECT * FROM plans";
 
             using (var reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
                     PlanDS plan = new PlanDS(
-                        Int32.Parse(reader.GetString(0)),
-                        reader.GetString(1)
+                        reader.GetString(1),
+                        PlanDS.getTimeFromStringFormat(reader.GetString(2)),
+                        Int32.Parse(reader.GetString(0))
                     );
                     plans.Add(plan);
                 }
@@ -63,24 +69,58 @@ namespace ServiceTestConsoleApp
             return plans;
         }
 
-        public bool addPlan(string path)
+        public void addPlan(PlanDS plan)
         {
             connection.Open();
             var command = connection.CreateCommand();
-            command.CommandText = $"SELECT * FROM Plans";
-
+            command.CommandText = $"insert into plans(path, time) values(\"{plan.path}\", \"{plan.getTimeStringFormat()}\")";
+            command.ExecuteScalar();
             connection.Close();
-            return true;
         }
 
-        public bool removePlan(PlanDS plan)
+        public void removePlan(PlanDS plan)
         {
             connection.Open();
             var command = connection.CreateCommand();
-            command.CommandText = $"SELECT * FROM Plans";
-
+            command.CommandText = $"DELETE FROM plans WHERE id = '{plan.id}'";
+            command.ExecuteScalar();
             connection.Close();
-            return true;
+        }
+
+        public void addToQuarantine(string path)
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = $"insert into quarantine(path) values(\"{path}\")";
+            command.ExecuteScalar();
+            connection.Close();
+        }
+
+        public void removeFromQuarantine(string path)
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = $"DELETE FROM quarantine WHERE path = '{path}'";
+            command.ExecuteScalar();
+            connection.Close();
+        }
+
+        public List<string> getQuarantineFiles()
+        {
+            connection.Open();
+            List<string> quarantine = new List<string>();
+            var command = connection.CreateCommand();
+            command.CommandText = $"SELECT * FROM quarantine";
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    quarantine.Add(reader.GetString(1));
+                }
+            }
+            connection.Close();
+            return quarantine;
         }
     }
 }

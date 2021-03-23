@@ -14,7 +14,6 @@ namespace ServiceTestConsoleApp
             qBytes.CopyTo(changedBytes, 0);
             bytes.CopyTo(changedBytes, qBytes.Length);
             File.WriteAllBytes(filePath, changedBytes);
-            Console.WriteLine("Success");
             return true;
         }
 
@@ -25,7 +24,6 @@ namespace ServiceTestConsoleApp
             byte[] changedBytes = new byte[bytes.Length - qBytes.Length];
             bytes.Skip(qBytes.Length).ToArray().CopyTo(changedBytes, 0);
             File.WriteAllBytes(filePath, changedBytes);
-            Console.WriteLine("Success");
             return true;
         }
 
