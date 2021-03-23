@@ -12,7 +12,7 @@ namespace ServiceTestConsoleApp
         static private FileSystemWatcher watcher;
         static private List<string> dangerFiles;
 
-        static public bool startMonitoring(string path)
+        static public bool start(string path)
         {
             if (Monitoring.alreadyRun) return false;
             Monitoring.alreadyRun = true;
@@ -29,7 +29,7 @@ namespace ServiceTestConsoleApp
             return true;
         }
 
-        static public void stopMonitoring()
+        static public void stop()
         {
             Monitoring.watcher.Dispose();
             Monitoring.alreadyRun = false;
@@ -50,12 +50,11 @@ namespace ServiceTestConsoleApp
             bool isContained = Monitoring.dangerFiles.Contains(path);
             if (!isContained) {
                 Monitoring.dangerFiles.Add(path);
-                Monitoring.logger();
             }
             // работа с zip
         }
 
-        static private void logger()
+        static private string result()
         {
             string TEXT_DetectedDangers = $"Обнаружено угроз: {Monitoring.dangerFiles.Count}";
             string TEXT_PathOfDangersFiles = "";
@@ -64,8 +63,7 @@ namespace ServiceTestConsoleApp
                 TEXT_PathOfDangersFiles += $"{path}\n";
             }
             string TEXT_Result = $"{TEXT_DetectedDangers}\n{TEXT_PathOfDangersFiles}";
-            Console.WriteLine(TEXT_Result);
-            // отправлять данные на клиент
+            return TEXT_Result;
         }
     }
 }

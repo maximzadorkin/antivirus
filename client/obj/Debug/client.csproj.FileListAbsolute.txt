@@ -1,7 +1,6 @@
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\bin\Debug\client.exe.config
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\bin\Debug\client.exe
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\bin\Debug\client.pdb
-C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\obj\Debug\client.csprojAssemblyReference.cache
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\obj\Debug\MainWindow.g.cs
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\obj\Debug\App.g.cs
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\obj\Debug\client_MarkupCompile.cache

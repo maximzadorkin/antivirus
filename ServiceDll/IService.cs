@@ -1,4 +1,5 @@
-﻿using System.ServiceModel;
+﻿using System.Collections.Generic;
+using System.ServiceModel;
 
 namespace ServiceDll
 {
@@ -6,8 +7,47 @@ namespace ServiceDll
     public interface IService
     {
         [OperationContract]
-        string Method1(string x);
+        void startScanner(string path); // отправить результаты
+
         [OperationContract]
-        string Method2(string x);
+        void stopScanner(); // отправить результаты
+
+        [OperationContract]
+        string logScanner();
+
+        [OperationContract]
+        bool getScanStatus();
+
+
+
+        [OperationContract]
+        void startMonitoring(string path); // отправить результаты
+
+        [OperationContract]
+        void stopMonitoring(); // отправить результаты
+
+        [OperationContract]
+        string logMonitoring();
+
+
+
+        [OperationContract]
+        void handlerFiles(List<FileDS> files);
+
+
+
+        [OperationContract]
+        void addPlan(PlanDS plan);
+
+        [OperationContract]
+        void removePlan(PlanDS plan);
+
+        [OperationContract]
+        List<PlanDS> getAllPlans();
+
+
+
+        [OperationContract]
+        List<string> getVirusesFiles();
     }
 }

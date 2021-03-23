@@ -1,23 +1,90 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading;
 
 namespace ServiceDll
 {
     public class Service : IService
     {
-        public string Method1(string x)
+        static public Scanner scanner = new Scanner();
+        static public DataBase database = new DataBase();
+
+        public void startScanner(string path) 
         {
-            string s = $"1 You entered: {x} = = = 1";
-            return s;
+            Thread thread = new Thread(new ThreadStart(
+                () => Service.scanner.start(path)
+            ));
+            thread.Start();
+        }
+        public void stopScanner() 
+        {
+            Service.scanner.stop();
+        }
+        public string logScanner() 
+        {
+            return scanner.logger();
+        }
+        public bool getScanStatus()
+        {
+            return Scanner.getScanStatus();
         }
 
-        public string Method2(string x)
+
+
+        public void startMonitoring(string path) 
         {
-            string s = $"2 you entered: {x} = = = 2";
-            return s;
+            Thread thread = new Thread(new ThreadStart(
+                () => Monitoring.start(path)
+            ));
+            thread.Start();
+        }
+        public void stopMonitoring() 
+        {
+            Monitoring.stop();
+        }
+        public string logMonitoring()
+        {
+            return Monitoring.result();
+        }
+
+
+        public void handlerFiles(List<FileDS> files) 
+        { 
+            foreach (FileDS file in files) {
+                switch (file.fileHandler)
+                {
+                    case FileDS.FilesHandler.Allow:
+                        break;
+                    case FileDS.FilesHandler.ToQuarantine:
+                        FilesWorker.addFileToQuarantine(file.path);
+                        break;
+                    case FileDS.FilesHandler.Delete:
+                        FilesWorker.deleteFile(file.path);
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+
+        public void addPlan(PlanDS plan)
+        {
+            Service.database.addPlan(plan);
+        }
+
+        public void removePlan(PlanDS plan)
+        {
+            Service.database.removePlan(plan);
+        }
+        public List<PlanDS> getAllPlans()
+        {
+            return Service.database.getAllPlans();
+        }
+
+
+
+        public List<string> getVirusesFiles()
+        {
+            return Service.database.getVirusesFiles();
         }
     }
 }

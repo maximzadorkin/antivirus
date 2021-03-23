@@ -66,3 +66,57 @@ System.Security.SecurityException: Источник не найден, но не
 Этап отката выполнен успешно.
 
 Групповая операция установки выполнена.
+
+Выполняется групповая операция установки.
+
+Начинается этап установки процедуры установки.
+См. файл журнала выполнения операция для сборки C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe.
+Данный файл находится в C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog.
+
+На этапе установки возникло исключение.
+System.InvalidOperationException: Невозможно открыть диспетчер управления службами на компьютере '.'. Возможно, для этой операции требуются другие полномочия.
+Возникло внутреннее исключение System.ComponentModel.Win32Exception со следующим сообщением об ошибке: Отказано в доступе.
+
+Начинается этап отката процедуры установки.
+См. файл журнала выполнения операция для сборки C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe.
+Данный файл находится в C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog.
+
+Этап отката выполнен успешно.
+
+Групповая операция установки выполнена.
+
+Выполняется групповая операция установки.
+
+Начинается этап установки процедуры установки.
+См. файл журнала выполнения операция для сборки C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe.
+Данный файл находится в C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog.
+
+На этапе установки возникло исключение.
+System.InvalidOperationException: Невозможно открыть диспетчер управления службами на компьютере '.'. Возможно, для этой операции требуются другие полномочия.
+Возникло внутреннее исключение System.ComponentModel.Win32Exception со следующим сообщением об ошибке: Отказано в доступе.
+
+Начинается этап отката процедуры установки.
+См. файл журнала выполнения операция для сборки C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe.
+Данный файл находится в C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog.
+
+Этап отката выполнен успешно.
+
+Групповая операция установки выполнена.
+
+Выполняется групповая операция установки.
+
+Начинается этап установки процедуры установки.
+См. файл журнала выполнения операция для сборки C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe.
+Данный файл находится в C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog.
+
+На этапе установки возникло исключение.
+System.InvalidOperationException: Невозможно открыть диспетчер управления службами на компьютере '.'. Возможно, для этой операции требуются другие полномочия.
+Возникло внутреннее исключение System.ComponentModel.Win32Exception со следующим сообщением об ошибке: Отказано в доступе.
+
+Начинается этап отката процедуры установки.
+См. файл журнала выполнения операция для сборки C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe.
+Данный файл находится в C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog.
+
+Этап отката выполнен успешно.
+
+Групповая операция установки выполнена.

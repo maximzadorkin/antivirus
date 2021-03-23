@@ -71,6 +71,15 @@ namespace ServiceTestConsoleApp
 
         public void addPlan(PlanDS plan)
         {
+            List<PlanDS> ps = this.getAllPlans();
+            foreach (PlanDS p in ps)
+            {
+                bool haveThisTime = p.getTimeStringFormat() == plan.getTimeStringFormat();
+                bool haveThisPath = p.path == plan.path;
+                if (haveThisTime && haveThisPath)
+                    return;
+            }
+
             connection.Open();
             var command = connection.CreateCommand();
             command.CommandText = $"insert into plans(path, time) values(\"{plan.path}\", \"{plan.getTimeStringFormat()}\")";
@@ -89,6 +98,9 @@ namespace ServiceTestConsoleApp
 
         public void addToQuarantine(string path)
         {
+            List<string> q = this.getQuarantineFiles();
+            if (q.Contains(path)) return;
+
             connection.Open();
             var command = connection.CreateCommand();
             command.CommandText = $"insert into quarantine(path) values(\"{path}\")";
@@ -121,6 +133,45 @@ namespace ServiceTestConsoleApp
             }
             connection.Close();
             return quarantine;
+        }
+
+        public void addToFoundViruses(string path)
+        {
+            List<string> vs = this.getVirusesFiles();
+            if (vs.Contains(path)) return;
+
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = $"insert into found_viruses(path) values(\"{path}\")";
+            command.ExecuteScalar();
+            connection.Close();
+        }
+
+        public void removeFromFoundViruses(string path)
+        {
+            connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = $"DELETE FROM found_viruses WHERE path = '{path}'";
+            command.ExecuteScalar();
+            connection.Close();
+        }
+
+        public List<string> getVirusesFiles()
+        {
+            connection.Open();
+            List<string> viruses = new List<string>();
+            var command = connection.CreateCommand();
+            command.CommandText = $"SELECT * FROM found_viruses";
+
+            using (var reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    viruses.Add(reader.GetString(0));
+                }
+            }
+            connection.Close();
+            return viruses;
         }
     }
 }

@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsService", "WindowsSe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceDll", "ServiceDll\ServiceDll.csproj", "{E7655CBF-32AD-4526-B62A-9CEAECD7E1CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceTestConsoleApp", "ServiceTestConsoleApp\ServiceTestConsoleApp.csproj", "{54FF5BC3-0787-4674-B6CF-9CCDEABF6D4D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,10 +27,6 @@ Global
 		{E7655CBF-32AD-4526-B62A-9CEAECD7E1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7655CBF-32AD-4526-B62A-9CEAECD7E1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7655CBF-32AD-4526-B62A-9CEAECD7E1CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{54FF5BC3-0787-4674-B6CF-9CCDEABF6D4D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{54FF5BC3-0787-4674-B6CF-9CCDEABF6D4D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{54FF5BC3-0787-4674-B6CF-9CCDEABF6D4D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{54FF5BC3-0787-4674-B6CF-9CCDEABF6D4D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

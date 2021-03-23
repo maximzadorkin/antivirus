@@ -15,31 +15,31 @@ namespace ServiceTestConsoleApp
         private bool needScanLogger;
 
         private string[] entries;
-        private List<FileDS> filesForScan;
+        static private List<FileDS> filesForScan;
 
-        public bool startScanner(string path, bool needScanLogger = false)
+        public bool start(string path, bool needScanLogger = false)
         {
             if (Scanner.scanning) return false;
             this.pathName = path;
             this.isFile = File.Exists(path);
             this.needScanLogger = needScanLogger;
-            this.filesForScan = new List<FileDS>();
+            Scanner.filesForScan = new List<FileDS>();
 
             Scanner.scanning = true;
 
             DangersDetection detection = new DangersDetection();
             if (this.isFile && detection.detectDanger(this.pathName))
-                this.filesForScan.Add(new FileDS(this.pathName));
+                Scanner.filesForScan.Add(new FileDS(this.pathName));
             else
                 this.folderScanner(this.pathName);
 
             this.filesScanner();
 
-            this.stopScanner();
+            this.stop();
             return true;
         }
 
-        public void stopScanner()
+        public void stop()
         {
             Scanner.scanning = false;
         }
@@ -60,7 +60,7 @@ namespace ServiceTestConsoleApp
                 //    Console.WriteLine("isZipFile" + path);
                 //this.zipScanner(path);
                 //else
-                this.filesForScan.Add(new FileDS(path));
+                Scanner.filesForScan.Add(new FileDS(path));
             }
         }
 
@@ -83,7 +83,7 @@ namespace ServiceTestConsoleApp
             int fileIndex = 0;
             int dangerFilesCount = 0;
             DangersDetection detection = new DangersDetection();
-            foreach (FileDS file in this.filesForScan)
+            foreach (FileDS file in Scanner.filesForScan)
             {
                 if (!Scanner.scanning) break;
 
@@ -102,33 +102,28 @@ namespace ServiceTestConsoleApp
             }
         }
 
-        // TODO
-        private bool logger(int fileIndex, int dangersCount)
+        private string logger(int fileIndex, int dangersCount)
         {
-            string TEXT_Scanned = $"Всего файлов: {this.filesForScan.Count}";
+            string TEXT_Scanned = $"Всего файлов: {Scanner.filesForScan.Count}";
             string TEXT_AlreadyScanned = $"Проверено: {fileIndex + 1}";
             string TEXT_DangerFilesCount = $"Найдено уязвимостей: {dangersCount}";
             string TEXT_Log = TEXT_Scanned + "\n"
                 + TEXT_AlreadyScanned + "\n"
                 + TEXT_DangerFilesCount;
-            Console.WriteLine(TEXT_Log);
-            // отправлять на клиент сведения
-            return true;
+            return TEXT_Log;
         }
 
-        // TODO
         public string getScanResult()
         {
-            List<FileDS> dangerousFiles = this.filesForScan.FindAll((FileDS file) => file.danger);
-            string TEXT_CountAllFiles = $"Всего файлов найдено: {this.filesForScan.Count}";
+            List<FileDS> dangerousFiles = Scanner.filesForScan.FindAll((FileDS file) => file.danger);
+            string TEXT_CountAllFiles = $"Всего файлов найдено: {Scanner.filesForScan.Count}";
             string TEXT_DangerousFilesCount = $"Найдено уязвимостей: {dangerousFiles.Count}";
             string TEXT_DangerousFiles = "";
-            foreach (FileDS file in this.filesForScan)
+            foreach (FileDS file in Scanner.filesForScan)
             {
                 if (file.danger) TEXT_DangerousFiles += $"{file.path}\n";
             }
             string TEXT_Result = $"{TEXT_CountAllFiles}\n{TEXT_DangerousFilesCount}\n{TEXT_DangerousFiles}";
-            // отправить на клиент итоги
             return TEXT_Result;
         }
     }
