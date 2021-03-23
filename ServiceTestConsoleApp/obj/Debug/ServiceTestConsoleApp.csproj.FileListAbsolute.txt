@@ -19,3 +19,9 @@ C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsol
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\obj\Debug\ServiceTestConsoleApp.csproj.CopyComplete
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\obj\Debug\ServiceTestConsoleApp.exe
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\obj\Debug\ServiceTestConsoleApp.pdb
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\bin\Debug\SQLitePCLRaw.batteries_v2.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\bin\Debug\SQLitePCLRaw.nativelibrary.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\bin\Debug\SQLitePCLRaw.provider.dynamic_cdecl.dll

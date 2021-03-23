@@ -85,7 +85,7 @@ namespace ServiceTestConsoleApp
                     if (this.signatureOnFullMatch(virus, data, i))
                     {
                         isDanger = true;
-                        break;
+                        return isDanger;
                     }
                 }
             }
@@ -143,7 +143,7 @@ namespace ServiceTestConsoleApp
 
         private bool signatureOnFullMatch(VirusDS virus, byte[] data, int offset)
         {
-            string signature = this.getStringOfBytes(data, offset, virus.signature.Length);
+            string signature = this.getStringOfBytes(data, offset, virus.signature.Length / 2);
             bool signatureInFrame = (offset + virus.signature.Length) < virus.offsetEnd;
             if (signature.Equals(virus.signature) && signatureInFrame)
                 return true;

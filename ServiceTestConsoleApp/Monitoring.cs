@@ -39,7 +39,6 @@ namespace ServiceTestConsoleApp
         {
             string path = e.FullPath;
             Thread.Sleep(3000);
-            Console.WriteLine("check " + path);
             bool isFile = File.Exists(path);
             if (!isFile) return;
 

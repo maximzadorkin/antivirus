@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 
 namespace ServiceTestConsoleApp
 {
@@ -7,11 +8,24 @@ namespace ServiceTestConsoleApp
     {
         static public bool addFileToQuarantine(string filePath)
         {
+            byte[] bytes = File.ReadAllBytes(filePath);
+            byte[] qBytes = { (byte)'Q' };
+            byte[] changedBytes = new byte[qBytes.Length + bytes.Length];
+            qBytes.CopyTo(changedBytes, 0);
+            bytes.CopyTo(changedBytes, qBytes.Length);
+            File.WriteAllBytes(filePath, changedBytes);
+            Console.WriteLine("Success");
             return true;
         }
 
         static public bool removeFileFromQuarantine(string filePath)
         {
+            byte[] bytes = File.ReadAllBytes(filePath);
+            byte[] qBytes = { (byte)'Q' };
+            byte[] changedBytes = new byte[bytes.Length - qBytes.Length];
+            bytes.Skip(qBytes.Length).ToArray().CopyTo(changedBytes, 0);
+            File.WriteAllBytes(filePath, changedBytes);
+            Console.WriteLine("Success");
             return true;
         }
 

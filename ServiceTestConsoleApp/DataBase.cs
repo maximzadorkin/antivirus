@@ -8,11 +8,16 @@ namespace ServiceTestConsoleApp
     class DataBase
     {
         private string source = $"{Directory.GetCurrentDirectory()}\\AntivirusZM.db";
+        SqliteConnection connection;
+
+        public DataBase()
+        {
+            this.connection = new SqliteConnection("Data Source=" + this.source);
+        }
+
         public List<VirusDS> getViruses(string signature, int position)
         {
-            Console.WriteLine(this.source);
             List<VirusDS> viruses = new List<VirusDS>();
-            SqliteConnection connection = new SqliteConnection("Data Source=" + this.source);
             connection.Open();
             var command = connection.CreateCommand();
             command.CommandText = $"SELECT * FROM Viruses WHERE Signature Like '{signature}%' AND OffsetBegin <= {position} AND OffsetEnd >= {position}";
@@ -32,12 +37,12 @@ namespace ServiceTestConsoleApp
 
                 }
             }
+            connection.Close();
             return viruses;
         }
 
         public List<PlanDS> getAllPlans()
         {
-            SqliteConnection connection = new SqliteConnection("Data Source=" + this.source);
             connection.Open();
             List<PlanDS> plans = new List<PlanDS>();
             var command = connection.CreateCommand();
@@ -54,22 +59,27 @@ namespace ServiceTestConsoleApp
                     plans.Add(plan);
                 }
             }
+            connection.Close();
             return plans;
         }
 
         public bool addPlan(string path)
         {
-            SqliteConnection connection = new SqliteConnection("Data Source=" + this.source);
             connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = $"SELECT * FROM Plans";
 
+            connection.Close();
             return true;
         }
 
         public bool removePlan(PlanDS plan)
         {
-            SqliteConnection connection = new SqliteConnection("Data Source=" + this.source);
             connection.Open();
+            var command = connection.CreateCommand();
+            command.CommandText = $"SELECT * FROM Plans";
 
+            connection.Close();
             return true;
         }
     }

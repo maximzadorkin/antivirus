@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Threading;
 
 namespace ServiceTestConsoleApp
 {
@@ -84,7 +86,16 @@ namespace ServiceTestConsoleApp
             foreach (FileDS file in this.filesForScan)
             {
                 if (!Scanner.scanning) break;
+
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                
                 file.danger = detection.detectDanger(file.path);
+
+                stopwatch.Stop();
+                Console.WriteLine(stopwatch.ElapsedMilliseconds / 1000);
+                Console.WriteLine(file.path);
+                Console.WriteLine(file.danger);
                 if (file.danger) dangerFilesCount += 1;
                 if (this.needScanLogger) this.logger(fileIndex, dangerFilesCount);
                 fileIndex += 1;
@@ -109,12 +120,12 @@ namespace ServiceTestConsoleApp
         public string getScanResult()
         {
             List<FileDS> dangerousFiles = this.filesForScan.FindAll((FileDS file) => file.danger);
-            string TEXT_CountAllFiles = $"Всего файлов просканировано: {this.filesForScan.Count}";
+            string TEXT_CountAllFiles = $"Всего файлов найдено: {this.filesForScan.Count}";
             string TEXT_DangerousFilesCount = $"Найдено уязвимостей: {dangerousFiles.Count}";
             string TEXT_DangerousFiles = "";
             foreach (FileDS file in this.filesForScan)
             {
-                TEXT_DangerousFiles += $"{file.path}\n";
+                if (file.danger) TEXT_DangerousFiles += $"{file.path}\n";
             }
             string TEXT_Result = $"{TEXT_CountAllFiles}\n{TEXT_DangerousFilesCount}\n{TEXT_DangerousFiles}";
             // отправить на клиент итоги

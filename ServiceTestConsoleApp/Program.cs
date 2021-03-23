@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 
 namespace ServiceTestConsoleApp
 {
@@ -8,7 +9,6 @@ namespace ServiceTestConsoleApp
         {   
             string foldername = "C:\\Users\\maxim\\Desktop\\Университет\\scaner\\realy";
             Scanner scanner =  new Scanner();
-
 
             string input = Console.ReadLine();
             while (input != "exit")
@@ -24,6 +24,8 @@ namespace ServiceTestConsoleApp
                         break;
                     case "stopScanner":
                         scanner.stopScanner();
+                        break;
+                    case "resultScanner":
                         Console.WriteLine(scanner.getScanResult());
                         break;
                     case "startMonitoring":
@@ -42,9 +44,11 @@ namespace ServiceTestConsoleApp
                         break;
                     case "deleteFile":
                         break;
-                    case "addToQuarantine":
+                    case "addToQ":
+                        FilesWorker.addFileToQuarantine("C:\\Users\\maxim\\Desktop\\Университет\\scaner\\realy\\papka\\7z1900-x64 — копия.exe");
                         break;
-                    case "removeToQuarantine":
+                    case "removeFromQ":
+                        FilesWorker.removeFileFromQuarantine("C:\\Users\\maxim\\Desktop\\Университет\\scaner\\realy\\papka\\7z1900-x64 — копия.exe");
                         break;
                     default:
                         break;
