@@ -29,8 +29,7 @@ namespace ServiceDll
 
             Scanner.scanning = true;
 
-            DangersDetection detection = new DangersDetection();
-            if (this.isFile && detection.detectDanger(this.pathName))
+            if (this.isFile)
                 Scanner.filesForScan.Add(new FileDS(this.pathName));
             else
                 this.folderScanner(this.pathName);
@@ -81,8 +80,9 @@ namespace ServiceDll
             }
         }
 
-        public string logger()
+        public string getScanResult()
         {
+            string TEXT_DangerousFiles = "";
             int countCheckedFiles = 0;
             int dangersCount = 0;
 
@@ -90,30 +90,22 @@ namespace ServiceDll
             {
                 if (!file.isChecked) break;
                 countCheckedFiles += 1;
-                if (file.danger) dangersCount += 1;
+                if (file.danger)
+                {
+                    dangersCount += 1;
+                    TEXT_DangerousFiles += $"{file.path}\n";
+                }
             }
 
             string TEXT_Scanned = $"Всего файлов: {Scanner.filesForScan.Count}";
-            string TEXT_AlreadyScanned = $"Проверено: {countCheckedFiles + 1}";
+            string TEXT_AlreadyScanned = $"Проверено: {countCheckedFiles}";
             string TEXT_DangerFilesCount = $"Найдено уязвимостей: {dangersCount}";
+            
             string TEXT_Log = TEXT_Scanned + "\n"
                 + TEXT_AlreadyScanned + "\n"
-                + TEXT_DangerFilesCount;
+                + TEXT_DangerFilesCount + "\n"
+                + TEXT_DangerousFiles;
             return TEXT_Log;
-        }
-
-        public string getScanResult()
-        {
-            List<FileDS> dangerousFiles = Scanner.filesForScan.FindAll((FileDS file) => file.danger);
-            string TEXT_CountAllFiles = $"Всего файлов найдено: {Scanner.filesForScan.Count}";
-            string TEXT_DangerousFilesCount = $"Найдено уязвимостей: {dangerousFiles.Count}";
-            string TEXT_DangerousFiles = "";
-            foreach (FileDS file in Scanner.filesForScan)
-            {
-                if (file.danger) TEXT_DangerousFiles += $"{file.path}\n";
-            }
-            string TEXT_Result = $"{TEXT_CountAllFiles}\n{TEXT_DangerousFilesCount}\n{TEXT_DangerousFiles}";
-            return TEXT_Result;
         }
     }
 }

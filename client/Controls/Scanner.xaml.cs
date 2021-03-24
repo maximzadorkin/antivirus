@@ -1,4 +1,5 @@
 ﻿using Microsoft.WindowsAPICodePack.Dialogs;
+using ServiceDll;
 using System;
 using System.Collections.Generic;
 using System.IO.MemoryMappedFiles;
@@ -25,26 +26,97 @@ namespace client
     {
         private string scanPath = "";
 
-
         public Scanner()
         {
             InitializeComponent();
             Result.Visibility = Visibility.Hidden;
         }
 
-        private void startScan()
+        private void printResults()
         {
-            Label label = (Label)this.StatusBar.Items.GetItemAt(0);
-            ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
+            ServiceClient client = ServiceClientCreate.createClient();
+            string results = client.getScanResult();
+            client.Close();
 
-            // logic of scan ScanResult.StackPanel.Children.Add(new FileProcessing("path"));
-            Result.Visibility = Visibility.Visible;
+            string[] lines = results.Split('\n');
+            string description = $"{lines[0]}\n{lines[1]}\n{lines[2]}";
+            Result.Label.Content = description;
+
+            if (lines.Length <= 3) return;
+
+            Result.StackPanel.Children.Clear();
+            for (int i = 3; i < lines.Length; i += 1)
+            {
+                string line = lines.ElementAt(i);
+                if (line.Length == 0) break;
+                Result.StackPanel.Children.Add(new FileProcessing(line));
+            }
+
+            Label label = (Label)StatusBar.Items.GetItemAt(0);
+            ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
+            label.Content = "";
+            progressBar.Value = 100;
         }
 
-        private void startRepair()
+        private void logger(IProgress<string[]> progressSender)
         {
-            Label label = (Label)this.StatusBar.Items.GetItemAt(0);
+            ServiceClient client = ServiceClientCreate.createClient();
+            string results = client.getScanResult();
+            client.Close();
+            
+            string[] lines = results.Split('\n');
+
+            string description = $"{lines[0]}\n{lines[1]}\n{lines[2]}";
+            
+            double totalFiles = Double.Parse(lines[0].Split(':')[1]);
+            double checkedFiles = Double.Parse(lines[1].Split(':')[1]);
+
+            double full = 100;
+            int progress = (int)Math.Round(full * (checkedFiles / totalFiles));
+
+            string[] result = { description, progress.ToString() };
+
+            progressSender.Report(result);
+        }
+
+        async private void start()
+        {
+            ServiceClient client = ServiceClientCreate.createClient();
+            client.startScanner(this.scanPath);
+            Result.Visibility = Visibility.Visible;
+            client.Close();
+
+            Label label = (Label)StatusBar.Items.GetItemAt(0);
             ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
+
+            var progress = new Progress<string[]>(r => {
+                label.Content = r[0];
+                progressBar.Value = Int32.Parse(r[1]);
+            });
+
+            await Task.Run(() =>
+            {
+                ServiceClient local = ServiceClientCreate.createClient();
+                while (local.getScanStatus()) {
+                    this.logger(progress);
+                    Thread.Sleep(1000);
+                }
+                local.Close();
+            });
+
+            this.stop();
+        }
+
+        private void stop()
+        {
+            ServiceClient client = ServiceClientCreate.createClient();
+            client.stopScanner();
+            client.Close();
+
+            ButtonPower.Content = "Начать сканирование";
+            Result.Visibility = Visibility.Visible;
+            
+            this.printResults();
         }
 
         private bool choosePath(bool isFile)
@@ -97,47 +169,20 @@ namespace client
                 Label label = (Label)this.StatusBar.Items.GetItemAt(0);
                 ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
                 label.Content = "Сканирование началось...";
-                progressBar.Value = 1;
-                
-                this.ButtonPower.Content = stopScan;
-
+                progressBar.Value = 0;
+                ButtonPower.Content = stopScan;
                 Result.StackPanel.Children.Clear();
                 Result.Label.Content = "";
-                Result.ButtonRepair.IsEnabled = false;
-
-                this.startScan();
+                this.start();
             } else
             {
                 Label label = (Label)this.StatusBar.Items.GetItemAt(0);
                 ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
                 label.Content = "";
                 progressBar.Value = 0;
-
-                this.ButtonPower.Content = startScan;
-
-                Result.ButtonRepair.IsEnabled = true;
+                ButtonPower.Content = startScan;
+                this.stop();
             }
-        }
-
-        private void ButtonRepair_Click(object sender, RoutedEventArgs e)
-        {
-            this.ButtonChoseFile.IsEnabled = false;
-            this.ButtonChoseDir.IsEnabled = false;
-            this.ButtonPower.IsEnabled = false;
-            Result.ButtonRepair.IsEnabled = false;
-
-
-            Label label = (Label)this.StatusBar.Items.GetItemAt(0);
-            ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
-            label.Content = "Выполнение...";
-            progressBar.Value = 1;
-
-            this.startRepair();
-
-
-            this.ButtonChoseFile.IsEnabled = true;
-            this.ButtonChoseDir.IsEnabled = true;
-            this.ButtonPower.IsEnabled = true;
         }
     }
 }

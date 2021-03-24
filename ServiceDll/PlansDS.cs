@@ -7,6 +7,8 @@ namespace ServiceDll
         public string path;
         public int id;
         public DateTime time;
+        public PlanDS() { }
+
         public PlanDS(string path, DateTime time, int id = -1)
         {
             this.id = id;

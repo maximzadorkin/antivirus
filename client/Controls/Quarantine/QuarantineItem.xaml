@@ -18,7 +18,9 @@
                     Foreground="White" 
                     FontFamily="Verdana" 
                     FontSize="14"
-                    Content="Удалить из карантина"
+                    Content="Удалить из карантина" 
+                    Cursor="Hand"
+                    Click="ButtonDelete_Click" 
                 />
                 <TextBlock 
                     x:Name="TextBlock" 

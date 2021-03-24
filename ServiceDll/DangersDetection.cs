@@ -20,7 +20,7 @@ namespace ServiceDll
             bool isExecutableOrZip = this.isExecutableOrZip(filePath, file);
             bool isDanger = false;
             if (isExecutableOrZip)
-                isDanger = this.verifyFileStream(file, filePath);
+                isDanger = this.verifyFileStream(file);
 
             file.Close();
             return isDanger;
@@ -67,7 +67,7 @@ namespace ServiceDll
             }
         }
 
-        private bool verifyFileStream(Stream stream, string path)
+        private bool verifyFileStream(Stream stream)
         {
             int offset = 0;
             bool isDanger = false;
@@ -112,7 +112,8 @@ namespace ServiceDll
                     default:
                         break;
                 }
-                if (stream.Position == stream.Length - 1) return null;
+                if (stream.Position == stream.Length - 1) 
+                    return null;
             }
 
             stream.Position += 10; // stream to rawDataSize

@@ -43,6 +43,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,16 +99,13 @@
     <Compile Include="Controls\Scanner.xaml.cs">
       <DependentUpon>Scanner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ServiceClientCreate.cs" />
     <Compile Include="ServiceProxy.cs" />
     <Page Include="Controls\Processing\FileProcessing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Processing\FilesProcessing.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Controls\UI\Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -118,9 +116,6 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Controls\UI\Button.xaml.cs">
-      <DependentUpon>Button.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -185,6 +180,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="icon-plans.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ServiceDll\ServiceDll.csproj">
+      <Project>{e7655cbf-32ad-4526-b62a-9ceaecd7e1cd}</Project>
+      <Name>ServiceDll</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

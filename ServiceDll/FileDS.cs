@@ -8,10 +8,12 @@
         public enum FilesHandler {
             Allow,
             ToQuarantine,
+            RemoveFromQuarantine,
             Delete
         }
         public FilesHandler fileHandler;
 
+        public FileDS() { }
         public FileDS(string path)
         {
             this.isChecked = false;

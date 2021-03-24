@@ -1,11 +1,8 @@
-C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\ServiceDll.dll
-C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\ServiceDll.pdb
-C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.csproj.CoreCompileInputs.cache
-C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.dll
-C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.pdb
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\runtimes\win-x86\native\e_sqlite3.dll
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\runtimes\win-arm\native\e_sqlite3.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\ServiceDll.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\ServiceDll.pdb
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\Microsoft.Data.Sqlite.dll
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\SQLitePCLRaw.batteries_v2.dll
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\SQLitePCLRaw.core.dll
@@ -20,5 +17,7 @@ C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\De
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\System.Memory.xml
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.csproj.CoreCompileInputs.cache
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.csproj.CopyComplete
-C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.csprojAssemblyReference.cache
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.dll
+C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceDll\obj\Debug\ServiceDll.pdb

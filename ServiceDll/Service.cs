@@ -8,20 +8,21 @@ namespace ServiceDll
         static public Scanner scanner = new Scanner();
         static public DataBase database = new DataBase();
 
-        public void startScanner(string path) 
+        public void startScanner(string path)
         {
             Thread thread = new Thread(new ThreadStart(
-                () => Service.scanner.start(path)
+                () => 
+                    Service.scanner.start(path)
             ));
             thread.Start();
         }
-        public void stopScanner() 
+        public void stopScanner()
         {
             Service.scanner.stop();
         }
-        public string logScanner() 
+        public string getScanResult()
         {
-            return scanner.logger();
+            return scanner.getScanResult();
         }
         public bool getScanStatus()
         {
@@ -30,14 +31,14 @@ namespace ServiceDll
 
 
 
-        public void startMonitoring(string path) 
+        public void startMonitoring(string path)
         {
             Thread thread = new Thread(new ThreadStart(
                 () => Monitoring.start(path)
             ));
             thread.Start();
         }
-        public void stopMonitoring() 
+        public void stopMonitoring()
         {
             Monitoring.stop();
         }
@@ -47,15 +48,19 @@ namespace ServiceDll
         }
 
 
-        public void handlerFiles(List<FileDS> files) 
-        { 
-            foreach (FileDS file in files) {
+        public void handlerFiles(List<FileDS> files)
+        {
+            foreach (FileDS file in files)
+            {
                 switch (file.fileHandler)
                 {
                     case FileDS.FilesHandler.Allow:
                         break;
                     case FileDS.FilesHandler.ToQuarantine:
                         FilesWorker.addFileToQuarantine(file.path);
+                        break;
+                    case FileDS.FilesHandler.RemoveFromQuarantine:
+                        FilesWorker.removeFileFromQuarantine(file.path);
                         break;
                     case FileDS.FilesHandler.Delete:
                         FilesWorker.deleteFile(file.path);
@@ -85,6 +90,11 @@ namespace ServiceDll
         public List<string> getVirusesFiles()
         {
             return Service.database.getVirusesFiles();
+        }
+
+        public List<string> getQuarantineList()
+        {
+            return Service.database.getQuarantineFiles();
         }
     }
 }

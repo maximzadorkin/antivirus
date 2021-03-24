@@ -218,3 +218,55 @@ System.Security.SecurityException: Источник не найден, но не
    logtoconsole = 
    logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
    assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба AntivirusZM...
+Создается исходный EventLog AntivirusZM в журнале Application...
+Выполняется откат для сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Восстанавливается исходное состояние журнала событий для источника AntivirusZM.
+Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба AntivirusZM...
+Служба AntivirusZM успешно установлена.
+Создается исходный EventLog AntivirusZM в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба AntivirusZM...
+Служба AntivirusZM успешно установлена.
+Создается исходный EventLog AntivirusZM в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Выполняется установка сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe
+Устанавливается служба AntivirusZM...
+Служба AntivirusZM успешно установлена.
+Создается исходный EventLog AntivirusZM в журнале Application...
+Выполняется фиксация сборки 'C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.InstallLog
+   assemblypath = C:\Users\maxim\Desktop\Университет\ВПО\antivirus\WindowsService\bin\Debug\WindowsService.exe

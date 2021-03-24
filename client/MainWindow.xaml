@@ -106,6 +106,15 @@
                 Visibility="Hidden"
             >
                 <Grid Background="#FF232323">
+                    <Label x:Name="LabelTabsName" 
+                        Content="" 
+                        Foreground="White" 
+                        FontFamily="Verdana" 
+                        FontSize="16" 
+                        Margin="15,0,0,0" 
+                        VerticalAlignment="Center" 
+                        HorizontalAlignment="Left"    
+                    />
                     <Button x:Name="ButtonBack" 
                         Width="200" 
                         Height="35" 
@@ -116,35 +125,36 @@
                         FontFamily="Verdana"
                         FontSize="16"
                         Cursor="Hand" 
-                        HorizontalAlignment="Left"
+                        HorizontalAlignment="Right"
                         Click="ButtonBack_Click"
                     />
                 </Grid>
             </Border>
-            <Grid>
+            <Grid Height="730">
                 <local:Scanner x:Name="WindowScanner" 
                     Width="Auto" 
                     Height="Auto" 
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Top"
                     Visibility="Hidden"
                 />
                 <local:Monitoring x:Name="WindowMonitoring" 
                     Width="Auto" 
                     Height="Auto" 
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Top"
                     Visibility="Hidden" 
                 />
                 <local:Plans x:Name="WindowPlans" 
                     Width="Auto" 
                     Height="Auto" 
-                    VerticalAlignment="Center"
+                    VerticalAlignment="Top"
                     Visibility="Hidden"
                 />
                 <local:Quarantine x:Name="WindowQuarantine" 
                     Width="Auto" 
                     Height="Auto" 
-                    VerticalAlignment="Center"
-                    Visibility="Hidden"
+                    VerticalAlignment="Top"
+                    Visibility="Hidden" 
+                    MinHeight="150"
                 />
             </Grid>
         </StackPanel>

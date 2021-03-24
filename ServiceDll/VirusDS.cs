@@ -2,6 +2,7 @@
 {
     public class VirusDS
     {
+        public VirusDS() { }
         public VirusDS(int id, string name, string signature, int offsetBegin, int offsetEnd)
         {
             this.id = id;

@@ -19,6 +19,175 @@ namespace ServiceReference
     // </auto-generated>
     //------------------------------------------------------------------------------
 
+    
+    
+
+
+        [System.Diagnostics.DebuggerStepThroughAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name = "FileDS", Namespace = "http://schemas.datacontract.org/2004/07/ServiceDll")]
+        public partial class FileDS : object, System.Runtime.Serialization.IExtensibleDataObject
+        {
+
+            private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+
+            private bool dangerField;
+
+            private ServiceDll.FileDS.FilesHandler fileHandlerField;
+
+            private bool isCheckedField;
+
+            private string pathField;
+
+            public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+            {
+                get
+                {
+                    return this.extensionDataField;
+                }
+                set
+                {
+                    this.extensionDataField = value;
+                }
+            }
+
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public bool danger
+            {
+                get
+                {
+                    return this.dangerField;
+                }
+                set
+                {
+                    this.dangerField = value;
+                }
+            }
+
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public ServiceDll.FileDS.FilesHandler fileHandler
+            {
+                get
+                {
+                    return this.fileHandlerField;
+                }
+                set
+                {
+                    this.fileHandlerField = value;
+                }
+            }
+
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public bool isChecked
+            {
+                get
+                {
+                    return this.isCheckedField;
+                }
+                set
+                {
+                    this.isCheckedField = value;
+                }
+            }
+
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public string path
+            {
+                get
+                {
+                    return this.pathField;
+                }
+                set
+                {
+                    this.pathField = value;
+                }
+            }
+
+            [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+            [System.Runtime.Serialization.DataContractAttribute(Name = "FileDS.FilesHandler", Namespace = "http://schemas.datacontract.org/2004/07/ServiceDll")]
+            public enum FilesHandler : int
+            {
+
+                [System.Runtime.Serialization.EnumMemberAttribute()]
+                Allow = 0,
+
+                [System.Runtime.Serialization.EnumMemberAttribute()]
+                ToQuarantine = 1,
+
+                [System.Runtime.Serialization.EnumMemberAttribute()]
+                RemoveFromQuarantine = 2,
+
+                [System.Runtime.Serialization.EnumMemberAttribute()]
+                Delete = 3,
+            }
+        }
+
+        [System.Diagnostics.DebuggerStepThroughAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+        [System.Runtime.Serialization.DataContractAttribute(Name = "PlanDS", Namespace = "http://schemas.datacontract.org/2004/07/ServiceDll")]
+        public partial class PlanDS : object, System.Runtime.Serialization.IExtensibleDataObject
+        {
+
+            private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+
+            private int idField;
+
+            private string pathField;
+
+            private System.DateTime timeField;
+
+            public System.Runtime.Serialization.ExtensionDataObject ExtensionData
+            {
+                get
+                {
+                    return this.extensionDataField;
+                }
+                set
+                {
+                    this.extensionDataField = value;
+                }
+            }
+
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public int id
+            {
+                get
+                {
+                    return this.idField;
+                }
+                set
+                {
+                    this.idField = value;
+                }
+            }
+
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public string path
+            {
+                get
+                {
+                    return this.pathField;
+                }
+                set
+                {
+                    this.pathField = value;
+                }
+            }
+
+            [System.Runtime.Serialization.DataMemberAttribute()]
+            public System.DateTime time
+            {
+                get
+                {
+                    return this.timeField;
+                }
+                set
+                {
+                    this.timeField = value;
+                }
+            }
+        }
+    }
 
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -26,17 +195,83 @@ namespace ServiceReference
     public interface IService
     {
 
-        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/Method1", ReplyAction = "http://tempuri.org/IService/Method1Response")]
-        string Method1(string x);
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/startScanner", ReplyAction = "http://tempuri.org/IService/startScannerResponse")]
+        void startScanner(string path);
 
-        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/Method1", ReplyAction = "http://tempuri.org/IService/Method1Response")]
-        System.Threading.Tasks.Task<string> Method1Async(string x);
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/startScanner", ReplyAction = "http://tempuri.org/IService/startScannerResponse")]
+        System.Threading.Tasks.Task startScannerAsync(string path);
 
-        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/Method2", ReplyAction = "http://tempuri.org/IService/Method2Response")]
-        string Method2(string x);
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/stopScanner", ReplyAction = "http://tempuri.org/IService/stopScannerResponse")]
+        void stopScanner();
 
-        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/Method2", ReplyAction = "http://tempuri.org/IService/Method2Response")]
-        System.Threading.Tasks.Task<string> Method2Async(string x);
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/stopScanner", ReplyAction = "http://tempuri.org/IService/stopScannerResponse")]
+        System.Threading.Tasks.Task stopScannerAsync();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getScanResult", ReplyAction = "http://tempuri.org/IService/getScanResultResponse")]
+        string getScanResult();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getScanResult", ReplyAction = "http://tempuri.org/IService/getScanResultResponse")]
+        System.Threading.Tasks.Task<string> getScanResultAsync();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getScanStatus", ReplyAction = "http://tempuri.org/IService/getScanStatusResponse")]
+        bool getScanStatus();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getScanStatus", ReplyAction = "http://tempuri.org/IService/getScanStatusResponse")]
+        System.Threading.Tasks.Task<bool> getScanStatusAsync();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/startMonitoring", ReplyAction = "http://tempuri.org/IService/startMonitoringResponse")]
+        void startMonitoring(string path);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/startMonitoring", ReplyAction = "http://tempuri.org/IService/startMonitoringResponse")]
+        System.Threading.Tasks.Task startMonitoringAsync(string path);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/stopMonitoring", ReplyAction = "http://tempuri.org/IService/stopMonitoringResponse")]
+        void stopMonitoring();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/stopMonitoring", ReplyAction = "http://tempuri.org/IService/stopMonitoringResponse")]
+        System.Threading.Tasks.Task stopMonitoringAsync();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/logMonitoring", ReplyAction = "http://tempuri.org/IService/logMonitoringResponse")]
+        string logMonitoring();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/logMonitoring", ReplyAction = "http://tempuri.org/IService/logMonitoringResponse")]
+        System.Threading.Tasks.Task<string> logMonitoringAsync();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/handlerFiles", ReplyAction = "http://tempuri.org/IService/handlerFilesResponse")]
+        void handlerFiles(ServiceDll.FileDS[] files);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/handlerFiles", ReplyAction = "http://tempuri.org/IService/handlerFilesResponse")]
+        System.Threading.Tasks.Task handlerFilesAsync(ServiceDll.FileDS[] files);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/addPlan", ReplyAction = "http://tempuri.org/IService/addPlanResponse")]
+        void addPlan(ServiceDll.PlanDS plan);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/addPlan", ReplyAction = "http://tempuri.org/IService/addPlanResponse")]
+        System.Threading.Tasks.Task addPlanAsync(ServiceDll.PlanDS plan);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/removePlan", ReplyAction = "http://tempuri.org/IService/removePlanResponse")]
+        void removePlan(ServiceDll.PlanDS plan);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/removePlan", ReplyAction = "http://tempuri.org/IService/removePlanResponse")]
+        System.Threading.Tasks.Task removePlanAsync(ServiceDll.PlanDS plan);
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getAllPlans", ReplyAction = "http://tempuri.org/IService/getAllPlansResponse")]
+        ServiceDll.PlanDS[] getAllPlans();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getAllPlans", ReplyAction = "http://tempuri.org/IService/getAllPlansResponse")]
+        System.Threading.Tasks.Task<ServiceDll.PlanDS[]> getAllPlansAsync();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getVirusesFiles", ReplyAction = "http://tempuri.org/IService/getVirusesFilesResponse")]
+        string[] getVirusesFiles();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getVirusesFiles", ReplyAction = "http://tempuri.org/IService/getVirusesFilesResponse")]
+        System.Threading.Tasks.Task<string[]> getVirusesFilesAsync();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getQuarantineList", ReplyAction = "http://tempuri.org/IService/getQuarantineListResponse")]
+        string[] getQuarantineList();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getQuarantineList", ReplyAction = "http://tempuri.org/IService/getQuarantineListResponse")]
+        System.Threading.Tasks.Task<string[]> getQuarantineListAsync();
     }
 
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -73,25 +308,136 @@ namespace ServiceReference
         {
         }
 
-        public string Method1(string x)
+        public void startScanner(string path)
         {
-            return base.Channel.Method1(x);
+            base.Channel.startScanner(path);
         }
 
-        public System.Threading.Tasks.Task<string> Method1Async(string x)
+        public System.Threading.Tasks.Task startScannerAsync(string path)
         {
-            return base.Channel.Method1Async(x);
+            return base.Channel.startScannerAsync(path);
         }
 
-        public string Method2(string x)
+        public void stopScanner()
         {
-            return base.Channel.Method2(x);
+            base.Channel.stopScanner();
         }
 
-        public System.Threading.Tasks.Task<string> Method2Async(string x)
+        public System.Threading.Tasks.Task stopScannerAsync()
         {
-            return base.Channel.Method2Async(x);
+            return base.Channel.stopScannerAsync();
         }
-    }
+
+        public string getScanResult()
+        {
+            return base.Channel.getScanResult();
+        }
+
+        public System.Threading.Tasks.Task<string> getScanResultAsync()
+        {
+            return base.Channel.getScanResultAsync();
+        }
+
+        public bool getScanStatus()
+        {
+            return base.Channel.getScanStatus();
+        }
+
+        public System.Threading.Tasks.Task<bool> getScanStatusAsync()
+        {
+            return base.Channel.getScanStatusAsync();
+        }
+
+        public void startMonitoring(string path)
+        {
+            base.Channel.startMonitoring(path);
+        }
+
+        public System.Threading.Tasks.Task startMonitoringAsync(string path)
+        {
+            return base.Channel.startMonitoringAsync(path);
+        }
+
+        public void stopMonitoring()
+        {
+            base.Channel.stopMonitoring();
+        }
+
+        public System.Threading.Tasks.Task stopMonitoringAsync()
+        {
+            return base.Channel.stopMonitoringAsync();
+        }
+
+        public string logMonitoring()
+        {
+            return base.Channel.logMonitoring();
+        }
+
+        public System.Threading.Tasks.Task<string> logMonitoringAsync()
+        {
+            return base.Channel.logMonitoringAsync();
+        }
+
+        public void handlerFiles(ServiceDll.FileDS[] files)
+        {
+            base.Channel.handlerFiles(files);
+        }
+
+        public System.Threading.Tasks.Task handlerFilesAsync(ServiceDll.FileDS[] files)
+        {
+            return base.Channel.handlerFilesAsync(files);
+        }
+
+        public void addPlan(ServiceDll.PlanDS plan)
+        {
+            base.Channel.addPlan(plan);
+        }
+
+        public System.Threading.Tasks.Task addPlanAsync(ServiceDll.PlanDS plan)
+        {
+            return base.Channel.addPlanAsync(plan);
+        }
+
+        public void removePlan(ServiceDll.PlanDS plan)
+        {
+            base.Channel.removePlan(plan);
+        }
+
+        public System.Threading.Tasks.Task removePlanAsync(ServiceDll.PlanDS plan)
+        {
+            return base.Channel.removePlanAsync(plan);
+        }
+
+        public ServiceDll.PlanDS[] getAllPlans()
+        {
+            return base.Channel.getAllPlans();
+        }
+
+        public System.Threading.Tasks.Task<ServiceDll.PlanDS[]> getAllPlansAsync()
+        {
+            return base.Channel.getAllPlansAsync();
+        }
+
+        public string[] getVirusesFiles()
+        {
+            return base.Channel.getVirusesFiles();
+        }
+
+        public System.Threading.Tasks.Task<string[]> getVirusesFilesAsync()
+        {
+            return base.Channel.getVirusesFilesAsync();
+        }
+
+        public string[] getQuarantineList()
+        {
+            return base.Channel.getQuarantineList();
+        }
+
+        public System.Threading.Tasks.Task<string[]> getQuarantineListAsync()
+        {
+            return base.Channel.getQuarantineListAsync();
+        }
+    
+
 
 }

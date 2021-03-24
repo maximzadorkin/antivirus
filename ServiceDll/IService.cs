@@ -7,13 +7,13 @@ namespace ServiceDll
     public interface IService
     {
         [OperationContract]
-        void startScanner(string path); // отправить результаты
+        void startScanner(string path);
 
         [OperationContract]
-        void stopScanner(); // отправить результаты
+        void stopScanner();
 
         [OperationContract]
-        string logScanner();
+        string getScanResult();
 
         [OperationContract]
         bool getScanStatus();
@@ -21,10 +21,10 @@ namespace ServiceDll
 
 
         [OperationContract]
-        void startMonitoring(string path); // отправить результаты
+        void startMonitoring(string path);
 
         [OperationContract]
-        void stopMonitoring(); // отправить результаты
+        void stopMonitoring();
 
         [OperationContract]
         string logMonitoring();
@@ -49,5 +49,8 @@ namespace ServiceDll
 
         [OperationContract]
         List<string> getVirusesFiles();
+
+        [OperationContract]
+        List<string> getQuarantineList();
     }
 }

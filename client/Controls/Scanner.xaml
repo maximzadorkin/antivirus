@@ -4,9 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:client"
-             xmlns:ui="clr-namespace:client.Controls.UI"
              mc:Ignorable="d" Height="653.01" Width="992.857">
-    <Grid Background="{x:Null}" Margin="0,0,-0.2,-25.2">
+    <Grid Background="{x:Null}" Margin="0,0,-0.2,-97.2">
         <Button
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
@@ -75,7 +74,7 @@
             x:Name="StatusBar" 
             HorizontalAlignment="Left" 
             VerticalAlignment="Top" 
-            Height="50" 
+            Height="94" 
             Width="975"
             Margin="10,120,0,0" 
             BorderBrush="#FFEEEEEE" 
@@ -85,8 +84,7 @@
             <Label 
                 Foreground="#FFF0F0F0" 
                 FontFamily="Dubai" 
-                Height="40" 
-                Width="480"
+                Width="480" Height="84"
             />
             <Separator Foreground="#FF393E46" Background="#FFEEEEEE"/>
             <ProgressBar Width="475" Height="40">
@@ -98,6 +96,6 @@
                 </ProgressBar.Foreground>
             </ProgressBar>
         </StatusBar>
-        <local:FilesProcessing x:Name="Result" Margin="10,180,10,20"/>
+        <local:FilesProcessing x:Name="Result" Margin="10,237,10,40"/>
     </Grid>
 </UserControl>

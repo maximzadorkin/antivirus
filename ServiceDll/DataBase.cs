@@ -6,7 +6,7 @@ namespace ServiceDll
 {
     public class DataBase
     {
-        private string source = @"C:\Users\maxim\Desktop\Университет\ВПО\antivirus\ServiceTestConsoleApp\bin\Debug\AntivirusZM.db";//$"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\\AntivirusZM\\AntivirusZM.db";
+        private string source = @"C:\Program Files\AntivirusZMService\AntivirusZM.db";//$@"{Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)}\AntivirusZM\AntivirusZM.db";
         SqliteConnection connection;
 
         public DataBase()

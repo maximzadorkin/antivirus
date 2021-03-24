@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using static ServiceDll.FileDS;
 
 namespace client
 {
@@ -20,7 +21,7 @@ namespace client
     /// </summary>
     public partial class FileProcessing : UserControl
     {
-        public string selectedCommand = "000";
+        public FilesHandler selectedCommand = FilesHandler.Allow;
 
         public FileProcessing(string filepath)
         {
@@ -34,13 +35,13 @@ namespace client
             switch (rbtn.Content)
             {
                 default:
-                    selectedCommand = "000";
+                    selectedCommand = FilesHandler.Allow;
                     return;
                 case "В карантин":
-                    selectedCommand = "001";
+                    selectedCommand = FilesHandler.ToQuarantine;
                     return;
                 case "Удалить":
-                    selectedCommand = "002";
+                    selectedCommand = FilesHandler.Delete;
                     return;
             }
         }
