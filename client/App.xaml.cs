@@ -29,5 +29,13 @@ namespace client
             
             base.OnStartup(e);
         }
+
+        protected override void OnExit(ExitEventArgs e)
+        {
+            ServiceClient client = ServiceClientCreate.createClient();
+            client.stopScanner();
+            client.stopMonitoring();
+            base.OnExit(e);
+        }
     }
 }

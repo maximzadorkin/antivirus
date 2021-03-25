@@ -16,7 +16,7 @@ namespace ServiceDll
             this.time = time;
         }
 
-        public string getTimeStringFormat()
+        static public string getTimeStringFormat(DateTime time)
         {
             return time.ToString("yyyy-MM-dd|HH:mm");
         }

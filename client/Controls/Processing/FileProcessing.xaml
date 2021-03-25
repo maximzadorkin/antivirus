@@ -6,15 +6,47 @@
              xmlns:local="clr-namespace:client"
              mc:Ignorable="d" d:DesignWidth="800" Height="50">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="7*"/>
-        </Grid.ColumnDefinitions>
-        <RadioButton Content="Разрешить" Foreground="#FF4DD0A9" FontFamily="Dubai" IsChecked="True" Grid.Column="0" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
-        <RadioButton Content="В карантин" Foreground="#FFEBA51D" FontFamily="Dubai" Grid.Column="1" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
-        <RadioButton Content="Удалить" Foreground="#FFFF4343" FontFamily="Dubai" Grid.Column="2" VerticalAlignment="Center" Checked="RadioButton_Checked"/>
-        <Label x:Name="label" Content="Label" FontFamily="Dubai" Grid.Column="3" VerticalAlignment="Center" Foreground="#FFEEEEEE" />
+        <StackPanel Orientation="Horizontal">
+            <RadioButton 
+                Content="Разрешить" 
+                Foreground="#FF4DD0A9" 
+                IsChecked="True" 
+                VerticalAlignment="Center" 
+                Checked="RadioButton_Checked" 
+                Height="19" 
+                FontFamily="Verdana" 
+                FontSize="14" 
+                Margin="0,0,15,0"
+            />
+            <RadioButton 
+                Content="В карантин" 
+                Foreground="#FFEBA51D" 
+                VerticalAlignment="Center" 
+                Checked="RadioButton_Checked" 
+                Height="19" 
+                FontFamily="Verdana" 
+                FontSize="14"
+                Margin="0,0,15,0"
+            />
+            <RadioButton 
+                Content="Удалить" 
+                Foreground="#FFFF4343" 
+                VerticalAlignment="Center" 
+                Checked="RadioButton_Checked" 
+                Height="19" 
+                FontFamily="Verdana" 
+                FontSize="14"
+            />
+            <Label
+                x:Name="label" 
+                Content="Label"  
+                VerticalAlignment="Center" 
+                Foreground="#FFEEEEEE" 
+                Height="30" 
+                Margin="10,0,0,0"
+                FontFamily="Verdana" 
+                FontSize="14"
+            />
+        </StackPanel>
     </Grid>
 </UserControl>

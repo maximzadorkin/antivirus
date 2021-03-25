@@ -12,6 +12,11 @@ namespace ServiceDll
         static private FileSystemWatcher watcher;
         static private List<string> dangerFiles;
 
+        static public bool getStatus()
+        {
+            return Monitoring.alreadyRun;
+        }
+
         static public bool start(string path)
         {
             if (Monitoring.alreadyRun) return false;
@@ -31,7 +36,7 @@ namespace ServiceDll
 
         static public void stop()
         {
-            Monitoring.watcher.Dispose();
+            if (Monitoring.alreadyRun) Monitoring.watcher.Dispose();
             Monitoring.alreadyRun = false;
         }
 

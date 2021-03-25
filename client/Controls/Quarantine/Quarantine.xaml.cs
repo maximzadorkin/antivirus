@@ -41,11 +41,14 @@ namespace client
             {
                 while (true)
                 {
-                    ServiceClient client = ServiceClientCreate.createClient();
-                    string[] viruses = client.getQuarantineList();
-                    this.setViruses(progress, viruses);
-                    client.Close();
-                    Thread.Sleep(1000);
+                    if (this.Visibility == Visibility.Visible)
+                    {
+                        ServiceClient client = ServiceClientCreate.createClient();
+                        string[] viruses = client.getQuarantineList();
+                        this.setViruses(progress, viruses);
+                        client.Close();
+                    }
+                    Thread.Sleep(800);
                 }
             });
         }
@@ -53,18 +56,6 @@ namespace client
         private void setViruses(IProgress<string[]> progressSender, string[] viruses)
         {
             progressSender.Report(viruses);
-        }
-
-        public void GetQuarantineList()
-        {
-            ServiceClient client = ServiceClientCreate.createClient();
-            string[] viruses = client.getQuarantineList();
-            StackPanel.Children.Clear();
-            foreach (string virus in viruses)
-            {
-                StackPanel.Children.Add(new QuarantineItem(virus));
-            }
-            client.Close();
         }
     }
 }

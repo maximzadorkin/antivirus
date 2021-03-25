@@ -2,6 +2,8 @@
 using System.ServiceProcess;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using System.Threading;
+using ServiceDll;
 
 namespace WindowsService
 {
@@ -40,6 +42,8 @@ namespace WindowsService
             service_host.AddServiceEndpoint(typeof(IMetadataExchange), MetadataExchangeBindings.CreateMexTcpBinding(), "mex");
 
             service_host.Open();
+
+            Service.inspection();
         }
 
         protected override void OnStop()
@@ -49,6 +53,18 @@ namespace WindowsService
                 service_host.Close();
                 service_host = null;
             }
+        }
+
+        static void inspection()
+        {
+            Thread inspectThread = new Thread(new ThreadStart(
+                () =>
+                {
+                    ScheduledInspections inspect = new ScheduledInspections();
+                    inspect.startWatching();
+                }
+            ));
+            inspectThread.Start();
         }
     }
 }

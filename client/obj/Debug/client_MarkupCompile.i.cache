@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\App.xaml
-81474430125
+10-920685623
 
-15112675194
+17-893560428
 23-75417301
-Controls\Processing\FileProcessing.xaml;Controls\Processing\FilesProcessing.xaml;MainWindow.xaml;Controls\Monitoring.xaml;Controls\Plans.xaml;Controls\Quarantine\Quarantine.xaml;Controls\Quarantine\QuarantineItem.xaml;Controls\Scanner.xaml;
+Controls\Plans\Plan.xaml;Controls\Processing\FileProcessing.xaml;Controls\Processing\FilesProcessing.xaml;Controls\Viruses.xaml;MainWindow.xaml;Controls\Monitoring.xaml;Controls\Plans\Plans.xaml;Controls\Quarantine\Quarantine.xaml;Controls\Quarantine\QuarantineItem.xaml;Controls\Scanner.xaml;
 
 True
 

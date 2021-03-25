@@ -19,9 +19,6 @@ namespace ServiceReference
     // </auto-generated>
     //------------------------------------------------------------------------------
 
-    
-    
-
 
         [System.Diagnostics.DebuggerStepThroughAttribute()]
         [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
@@ -237,6 +234,12 @@ namespace ServiceReference
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/logMonitoring", ReplyAction = "http://tempuri.org/IService/logMonitoringResponse")]
         System.Threading.Tasks.Task<string> logMonitoringAsync();
 
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getMonitoringStatus", ReplyAction = "http://tempuri.org/IService/getMonitoringStatusResponse")]
+        bool getMonitoringStatus();
+
+        [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/getMonitoringStatus", ReplyAction = "http://tempuri.org/IService/getMonitoringStatusResponse")]
+        System.Threading.Tasks.Task<bool> getMonitoringStatusAsync();
+
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/handlerFiles", ReplyAction = "http://tempuri.org/IService/handlerFilesResponse")]
         void handlerFiles(ServiceDll.FileDS[] files);
 
@@ -244,10 +247,10 @@ namespace ServiceReference
         System.Threading.Tasks.Task handlerFilesAsync(ServiceDll.FileDS[] files);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/addPlan", ReplyAction = "http://tempuri.org/IService/addPlanResponse")]
-        void addPlan(ServiceDll.PlanDS plan);
+        bool addPlan(ServiceDll.PlanDS plan);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/addPlan", ReplyAction = "http://tempuri.org/IService/addPlanResponse")]
-        System.Threading.Tasks.Task addPlanAsync(ServiceDll.PlanDS plan);
+        System.Threading.Tasks.Task<bool> addPlanAsync(ServiceDll.PlanDS plan);
 
         [System.ServiceModel.OperationContractAttribute(Action = "http://tempuri.org/IService/removePlan", ReplyAction = "http://tempuri.org/IService/removePlanResponse")]
         void removePlan(ServiceDll.PlanDS plan);
@@ -378,6 +381,16 @@ namespace ServiceReference
             return base.Channel.logMonitoringAsync();
         }
 
+        public bool getMonitoringStatus()
+        {
+            return base.Channel.getMonitoringStatus();
+        }
+
+        public System.Threading.Tasks.Task<bool> getMonitoringStatusAsync()
+        {
+            return base.Channel.getMonitoringStatusAsync();
+        }
+
         public void handlerFiles(ServiceDll.FileDS[] files)
         {
             base.Channel.handlerFiles(files);
@@ -388,12 +401,12 @@ namespace ServiceReference
             return base.Channel.handlerFilesAsync(files);
         }
 
-        public void addPlan(ServiceDll.PlanDS plan)
+        public bool addPlan(ServiceDll.PlanDS plan)
         {
-            base.Channel.addPlan(plan);
+            return base.Channel.addPlan(plan);
         }
 
-        public System.Threading.Tasks.Task addPlanAsync(ServiceDll.PlanDS plan)
+        public System.Threading.Tasks.Task<bool> addPlanAsync(ServiceDll.PlanDS plan)
         {
             return base.Channel.addPlanAsync(plan);
         }
@@ -438,6 +451,5 @@ namespace ServiceReference
             return base.Channel.getQuarantineListAsync();
         }
     
-
 
 }

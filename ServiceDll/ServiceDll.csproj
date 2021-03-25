@@ -80,6 +80,7 @@
     <Compile Include="Monitoring.cs" />
     <Compile Include="PlansDS.cs" />
     <Compile Include="Scanner.cs" />
+    <Compile Include="ScheduledInspections.cs" />
     <Compile Include="Service.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VirusDS.cs" />

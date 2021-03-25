@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -37,23 +38,61 @@ namespace client
             if (dlg.ShowDialog() == CommonFileDialogResult.Ok)
                 this.path = dlg.FileName;
 
+            this.LabelPath.Content = this.path;
             this.ButtonPower.IsEnabled = true;
         }
 
-        private void ButtonPower_Click(object sender, RoutedEventArgs e)
+        async private void ButtonPower_Click(object sender, RoutedEventArgs e)
         {
             this.monitoringStarted = !this.monitoringStarted;
             ButtonPower.Content = this.monitoringStarted ? "Остановить" : "Запуск";
+            ServiceClient client = ServiceClientCreate.createClient();
             if (this.monitoringStarted) {
                 // запустить мониторинг
-                Results.Visibility = Visibility.Hidden;
+                client.startMonitoring(this.path);
+                Results.ButtonRepair.IsEnabled = false;
+                Results.Visibility = Visibility.Visible;
             } else {
                 // остановить мониторинг
-                //foreach () {
-                //    Results.StackPanel.Children.Add();
-                //}
-                Results.Visibility = Visibility.Visible;
+                client.stopMonitoring();
+                Results.ButtonRepair.IsEnabled = true;
             }
+            client.Close();
+
+            var progress = new Progress<string[]>(log => {
+                string information = log[0];
+                Results.Label.Content = information;
+                if (log.Length < 3) return;
+                Results.StackPanel.Children.Clear();
+                for (int i = 1; i < log.Length; i += 1)
+                {
+                    string virus = log[i];
+                    if (virus.Length == 0) break;
+
+                    Results.StackPanel.Children.Add(
+                        new FileProcessing(virus)
+                    );
+                }
+            });
+
+            await Task.Run(() =>
+            {
+                ServiceClient local = ServiceClientCreate.createClient();
+                while (local.getMonitoringStatus())
+                {
+                    this.logger(progress);
+                    Thread.Sleep(1000);
+                }
+                local.Close();
+            });
+        }
+
+        private void logger(IProgress<string[]> progress)
+        {
+            ServiceClient client = ServiceClientCreate.createClient();
+            string log = client.logMonitoring();
+            client.Close();
+            progress.Report(log.Split('\n'));
         }
     }
 }

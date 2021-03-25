@@ -1,4 +1,6 @@
-﻿using System.ServiceProcess;
+﻿using ServiceDll;
+using System.ServiceProcess;
+using System.Threading;
 
 namespace WindowsService
 {

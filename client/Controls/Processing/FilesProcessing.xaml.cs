@@ -21,6 +21,7 @@ namespace client
     /// </summary>
     public partial class FilesProcessing : UserControl
     {
+        public bool hiddenAfterRepaitClick = true;
         public FilesProcessing()
         {
             InitializeComponent();
@@ -41,7 +42,7 @@ namespace client
 
             client.Close();
             this.StackPanel.Children.Clear();
-            this.Visibility = Visibility.Hidden;
+            if (this.hiddenAfterRepaitClick) this.Visibility = Visibility.Hidden;
         }
     }
 }

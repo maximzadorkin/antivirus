@@ -20,7 +20,7 @@
                     Background="#FF232323" 
                     Foreground="White" 
                     FontFamily="Verdana" 
-                    FontSize="14" Click="ButtonChoseDir_Click"
+                    FontSize="14" Click="ButtonChoseDir_Click" Cursor="Hand"
                 />
                 <Label 
                     Content="Выбранный путь:" 
@@ -40,37 +40,23 @@
                 <Button 
                     x:Name="ButtonPower" 
                     Content="Запуск" 
-                    HorizontalAlignment="Left" 
+                    HorizontalAlignment="Center" 
                     Margin="10,0,0,0" 
                     VerticalAlignment="Top" 
                     Width="160" 
                     Height="46" 
                     BorderBrush="{x:Null}" 
-                    Background="#FF232323" 
+                    Background="#FF40D3B0" 
                     Foreground="White" 
                     FontFamily="Verdana" 
                     FontSize="14"
                     IsEnabled="False"
-                    Click="ButtonPower_Click"
+                    Click="ButtonPower_Click" Cursor="Hand"
                 />  
-                <Label 
-                    Content="Просканировано:" 
-                    HorizontalAlignment="Left" 
-                    Margin="184,0,0,0" 
-                    VerticalAlignment="Top" Foreground="White"
-                />
-                <Label 
-                    x:Name="LabelScanned" 
-                    Content="..." 
-                    HorizontalAlignment="Left" 
-                    VerticalAlignment="Top" 
-                    Margin="189,20,0,0" Foreground="White" 
-                />
             </Grid>
             <local:FilesProcessing 
                 x:Name="Results" 
                 Margin="10,0"
-                Visibility="Hidden"
             />
         </StackPanel>
     </Grid>

@@ -78,6 +78,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controls\Plans\Plan.xaml.cs">
+      <DependentUpon>Plan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Processing\FileProcessing.xaml.cs">
       <DependentUpon>FileProcessing.xaml</DependentUpon>
     </Compile>
@@ -87,7 +90,7 @@
     <Compile Include="Controls\Monitoring.xaml.cs">
       <DependentUpon>Monitoring.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Controls\Plans.xaml.cs">
+    <Compile Include="Controls\Plans\Plans.xaml.cs">
       <DependentUpon>Plans.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Quarantine\Quarantine.xaml.cs">
@@ -99,13 +102,24 @@
     <Compile Include="Controls\Scanner.xaml.cs">
       <DependentUpon>Scanner.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Viruses.xaml.cs">
+      <DependentUpon>Viruses.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ServiceClientCreate.cs" />
     <Compile Include="ServiceProxy.cs" />
+    <Page Include="Controls\Plans\Plan.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Processing\FileProcessing.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controls\Processing\FilesProcessing.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Viruses.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -125,7 +139,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controls\Plans.xaml">
+    <Page Include="Controls\Plans\Plans.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -189,6 +203,9 @@
       <Project>{e7655cbf-32ad-4526-b62a-9ceaecd7e1cd}</Project>
       <Name>ServiceDll</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Controls\icon-update.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

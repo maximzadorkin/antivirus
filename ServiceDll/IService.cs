@@ -28,6 +28,8 @@ namespace ServiceDll
 
         [OperationContract]
         string logMonitoring();
+        [OperationContract]
+        bool getMonitoringStatus();
 
 
 
@@ -37,7 +39,7 @@ namespace ServiceDll
 
 
         [OperationContract]
-        void addPlan(PlanDS plan);
+        bool addPlan(PlanDS plan);
 
         [OperationContract]
         void removePlan(PlanDS plan);

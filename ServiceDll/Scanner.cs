@@ -68,13 +68,9 @@ namespace ServiceDll
             foreach (FileDS file in Scanner.filesForScan)
             {
                 if (!Scanner.scanning) break;
-
-                Stopwatch stopwatch = new Stopwatch();
-                stopwatch.Start();
                 
                 file.danger = detection.detectDanger(file.path);
                 file.isChecked = true;
-                stopwatch.Stop();
                 if (file.danger) dangerFilesCount += 1;
                 fileIndex += 1;
             }

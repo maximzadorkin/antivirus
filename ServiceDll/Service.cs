@@ -46,34 +46,46 @@ namespace ServiceDll
         {
             return Monitoring.result();
         }
+        public bool getMonitoringStatus()
+        {
+            return Monitoring.getStatus();
+        }
 
 
         public void handlerFiles(List<FileDS> files)
         {
-            foreach (FileDS file in files)
+           try
             {
-                switch (file.fileHandler)
+                DataBase db = new DataBase();
+                foreach (FileDS file in files)
                 {
-                    case FileDS.FilesHandler.Allow:
-                        break;
-                    case FileDS.FilesHandler.ToQuarantine:
-                        FilesWorker.addFileToQuarantine(file.path);
-                        break;
-                    case FileDS.FilesHandler.RemoveFromQuarantine:
-                        FilesWorker.removeFileFromQuarantine(file.path);
-                        break;
-                    case FileDS.FilesHandler.Delete:
-                        FilesWorker.deleteFile(file.path);
-                        break;
-                    default:
-                        break;
+                    switch (file.fileHandler)
+                    {
+                        case FileDS.FilesHandler.Allow:
+                            db.removeFromFoundViruses(file.path);
+                            break;
+                        case FileDS.FilesHandler.ToQuarantine:
+                            FilesWorker.addFileToQuarantine(file.path);
+                            db.removeFromFoundViruses(file.path);
+                            break;
+                        case FileDS.FilesHandler.RemoveFromQuarantine:
+                            FilesWorker.removeFileFromQuarantine(file.path);
+                            db.removeFromFoundViruses(file.path);
+                            break;
+                        case FileDS.FilesHandler.Delete:
+                            FilesWorker.deleteFile(file.path);
+                            db.removeFromFoundViruses(file.path);
+                            break;
+                        default:
+                            break;
+                    }
                 }
-            }
+            } finally { }
         }
 
-        public void addPlan(PlanDS plan)
+        public bool addPlan(PlanDS plan)
         {
-            Service.database.addPlan(plan);
+            return Service.database.addPlan(plan);
         }
 
         public void removePlan(PlanDS plan)

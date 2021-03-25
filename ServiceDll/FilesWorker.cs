@@ -38,6 +38,7 @@ namespace ServiceDll
             try
             {
                 File.Delete(filePath);
+                DataBase db = new DataBase();
                 return true;
             }
             catch (UnauthorizedAccessException _e)

@@ -38,6 +38,8 @@ namespace client
             files.Add(file);
             client.handlerFiles(files.ToArray());
             client.Close();
+            StackPanel parent = (StackPanel)VisualTreeHelper.GetParent(this);
+            parent.Children.Remove(this);
         }
     }
 }

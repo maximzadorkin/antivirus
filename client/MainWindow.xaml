@@ -82,21 +82,40 @@
                         <TextBlock VerticalAlignment="Bottom" Text="Планы проверок" />
                     </Grid>
                 </Button>
-                <Button 
-                    x:Name="ButtonQuarantine"
-                    Style="{StaticResource StartButton}"
-                    Click="ButtonQuarantine_Click"
-                >
-                    <Grid Height="100">
-                        <Image 
+                <StackPanel>
+                    <Button 
+                        x:Name="ButtonQuarantine"
+                        Style="{StaticResource StartButton}"
+                        Click="ButtonQuarantine_Click" Height="95" 
+                        Margin="20,20,20,5"
+                    >
+                        <Grid Height="75">
+                            <Image 
                             Source="icon-quarantine.png" 
                             Width="50" 
                             Height="50" 
                             VerticalAlignment="Top" 
                         />
-                        <TextBlock VerticalAlignment="Bottom" Text="Карантин" />
-                    </Grid>
-                </Button>
+                            <TextBlock VerticalAlignment="Bottom" Text="Карантин" />
+                        </Grid>
+                    </Button>
+                    <Button 
+                        x:Name="ButtonViruses"
+                        Style="{StaticResource StartButton}"
+                        Click="ButtonViruses_Click" Height="95" 
+                        Margin="20,5,20,20"
+                    >
+                        <Grid Height="75">
+                            <Image 
+                            Source="icon-quarantine.png" 
+                            Width="50" 
+                            Height="50" 
+                            VerticalAlignment="Top" 
+                        />
+                            <TextBlock VerticalAlignment="Bottom" Text="Найденные вирусы" />
+                        </Grid>
+                    </Button>
+                </StackPanel>
             </StackPanel>
         </StackPanel>
         <StackPanel>
@@ -155,6 +174,12 @@
                     VerticalAlignment="Top"
                     Visibility="Hidden" 
                     MinHeight="150"
+                />
+                <local:Viruses x:Name="WindowViruses" 
+                    Width="Auto" 
+                    Height="Auto" 
+                    VerticalAlignment="Top"
+                    Visibility="Hidden" 
                 />
             </Grid>
         </StackPanel>

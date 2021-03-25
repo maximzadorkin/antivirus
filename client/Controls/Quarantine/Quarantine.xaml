@@ -13,11 +13,9 @@
             CornerRadius="5" 
             Margin="5,5,10,5"
         >
-            <StackPanel x:Name="StackPanel" >
-                <StackPanel.ScrollOwner>
-                    <ScrollViewer CanContentScroll="True"/>
-                </StackPanel.ScrollOwner>
-            </StackPanel>
+            <ScrollViewer CanContentScroll="True">
+                <StackPanel x:Name="StackPanel" />
+            </ScrollViewer>
         </Border>        
     </Grid>
 </UserControl>

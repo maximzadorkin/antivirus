@@ -6,8 +6,15 @@
              xmlns:local="clr-namespace:client"
              mc:Ignorable="d" d:DesignWidth="800" Height="473.2">
     <Grid Margin="0">
-        <StackPanel Background="{x:Null}">
-            <Label x:Name="Label" Content="..." Height="58" Foreground="White"/>
+        <StackPanel Background="{x:Null}" Height="Auto">
+            <Label 
+                x:Name="Label" 
+                Content="..." 
+                Height="58" 
+                Foreground="White" 
+                FontFamily="Verdana" 
+                FontSize="14"
+            />
             <Border BorderBrush="#FFEEEEEE" BorderThickness="0.5,0.5,0.5,0">
                 <ScrollViewer CanContentScroll="True" BorderThickness="0.5,0.5,0.5,0" Height="373" Margin="0.2,0">
                     <StackPanel x:Name="StackPanel" Height="380" />

@@ -83,8 +83,8 @@ namespace client
         {
             ServiceClient client = ServiceClientCreate.createClient();
             client.startScanner(this.scanPath);
-            Result.Visibility = Visibility.Visible;
             client.Close();
+            Result.Visibility = Visibility.Hidden;
 
             Label label = (Label)StatusBar.Items.GetItemAt(0);
             ProgressBar progressBar = (ProgressBar)this.StatusBar.Items.GetItemAt(2);
@@ -115,7 +115,8 @@ namespace client
 
             ButtonPower.Content = "Начать сканирование";
             Result.Visibility = Visibility.Visible;
-            
+            Result.ButtonRepair.IsEnabled = true;
+
             this.printResults();
         }
 

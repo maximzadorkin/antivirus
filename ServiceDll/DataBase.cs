@@ -68,22 +68,23 @@ namespace ServiceDll
             return plans;
         }
 
-        public void addPlan(PlanDS plan)
+        public bool addPlan(PlanDS plan)
         {
             List<PlanDS> ps = this.getAllPlans();
             foreach (PlanDS p in ps)
             {
-                bool haveThisTime = p.getTimeStringFormat() == plan.getTimeStringFormat();
+                bool haveThisTime = PlanDS.getTimeStringFormat(p.time) == PlanDS.getTimeStringFormat(plan.time);
                 bool haveThisPath = p.path == plan.path;
                 if (haveThisTime && haveThisPath)
-                    return;
+                    return false;
             }
 
             connection.Open();
             var command = connection.CreateCommand();
-            command.CommandText = $"insert into plans(path, time) values(\"{plan.path}\", \"{plan.getTimeStringFormat()}\")";
+            command.CommandText = $"insert into plans(path, time) values(\"{plan.path}\", \"{PlanDS.getTimeStringFormat(plan.time)}\")";
             command.ExecuteScalar();
             connection.Close();
+            return true;
         }
 
         public void removePlan(PlanDS plan)

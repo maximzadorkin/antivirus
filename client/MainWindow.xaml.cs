@@ -36,12 +36,14 @@ namespace client
                 this.ButtonMonitoring.Visibility = Visibility.Visible;
                 this.ButtonPlans.Visibility = Visibility.Visible;
                 this.ButtonQuarantine.Visibility = Visibility.Visible;
+                this.ButtonViruses.Visibility = Visibility.Visible;
             } else
             {
                 this.ButtonScanner.Visibility = Visibility.Hidden;
                 this.ButtonMonitoring.Visibility = Visibility.Hidden;
                 this.ButtonPlans.Visibility = Visibility.Hidden;
                 this.ButtonQuarantine.Visibility = Visibility.Hidden;
+                this.ButtonViruses.Visibility = Visibility.Hidden;
             }
         }
 
@@ -51,6 +53,7 @@ namespace client
             this.WindowMonitoring.Visibility = Visibility.Hidden;
             this.WindowPlans.Visibility = Visibility.Hidden;
             this.WindowQuarantine.Visibility = Visibility.Hidden;
+            this.WindowViruses.Visibility = Visibility.Hidden;
         }
 
         private void ButtonScanner_Click(object sender, RoutedEventArgs e)
@@ -83,6 +86,14 @@ namespace client
             this.SetVisibilityMainWindow(false);
             this.NavigationPanel.Visibility = Visibility.Visible;
             this.WindowQuarantine.Visibility = Visibility.Visible;
+        }
+        
+        private void ButtonViruses_Click(object sender, RoutedEventArgs e)
+        {
+            this.LabelTabsName.Content = "Найденные вирусы";
+            this.SetVisibilityMainWindow(false);
+            this.NavigationPanel.Visibility = Visibility.Visible;
+            this.WindowViruses.Visibility = Visibility.Visible;
         }
 
         private void ButtonBack_Click(object sender, RoutedEventArgs e)
