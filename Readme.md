@@ -8,6 +8,6 @@ https://drive.google.com/file/d/1jTBaCgxAV57MpTnsdpyqhWeArrBWnavh/view?usp=shari
 После включить ее в "Службы". Название службы - AntivirusZM
 (Батник не универсальный для каждого компьютера)
 
-.exe клиента лежит по адресу C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\bin\Debug\client.exe
+.exe клиента лежит по адресу \client\bin\Debug\client.exe
 
 Файл "вируса" лежит в !Virus
