@@ -16,4 +16,4 @@ https://drive.google.com/file/d/1jTBaCgxAV57MpTnsdpyqhWeArrBWnavh/view?usp=shari
 По адресу \client\bin\Debug\client.exe
 
 P.S. для просмотра Sqlite базы удобно использовать DB Browser for sqlite.
-P.S.S. Для удаления службы можно использовать UninstallService.
+P.S.S. Для удаления службы можно использовать UninstallService(запуск от имени администратора).
