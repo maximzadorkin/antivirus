@@ -1,12 +1,19 @@
 Демонстрация работы проекта
 https://drive.google.com/file/d/1jTBaCgxAV57MpTnsdpyqhWeArrBWnavh/view?usp=sharing
 
+Директория для тестирования лежит в !Virus
+
+Порядок установки:
+1. Перенести базу данных в указанный каталог
 База данных расположена в !DataBaseSqlite
-Чтобы проект работал база данных должна распологаться по адресу C:\Program Files\AntivirusZMService\AntivirusZM.db
+Перенести в каталог: C:\Program Files\AntivirusZMService\AntivirusZM.db
 
-Для установки службы необходимо запустить файл Install_Windows_Service.bat
-После включить ее в "Службы". Название службы - AntivirusZM
+2. Запустить InstallService.bat от имени администратора
 
-.exe клиента лежит по адресу C:\Users\maxim\Desktop\Университет\ВПО\antivirus\client\bin\Debug\client.exe
+3. Зайти в службы и запустить AntivirusZM
 
-Файл "вируса" лежит в !Virus
+4. Запустить Client. 
+По адресу \client\bin\Debug\client.exe
+
+P.S. для просмотра Sqlite базы удобно использовать DB Browser for sqlite.
+P.S.S. Для удаления службы можно использовать UninstallService.

@@ -9,7 +9,6 @@
         Height="800.4" 
         Width="1005.6" 
         Visibility="Visible" 
-        ResizeMode="NoResize" 
         WindowStartupLocation="CenterScreen" 
         SnapsToDevicePixels="True" WindowStyle="ToolWindow"
 >
@@ -173,7 +172,7 @@
                     Height="Auto" 
                     VerticalAlignment="Top"
                     Visibility="Hidden" 
-                    MinHeight="150"
+                    
                 />
                 <local:Viruses x:Name="WindowViruses" 
                     Width="Auto" 

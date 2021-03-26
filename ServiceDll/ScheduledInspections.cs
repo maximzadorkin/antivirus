@@ -42,39 +42,21 @@ namespace ServiceDll
 
         private void startInspection(PlanDS plan)
         {
-            List<FileDS> filesForInspect = new List<FileDS>();
-            bool isFile = File.Exists(plan.path);
-
-            if (isFile) filesForInspect.Add(new FileDS(plan.path));
-            else
-            {
-                string[] allEntries = Directory.GetFiles(plan.path, "*.*", SearchOption.AllDirectories);
-                string[] entries = Array.FindAll(
-                    allEntries,
-                    s => DangersDetection.SupportedExtensions.Contains(Path.GetExtension(s).ToLower())
-                );
-
-                foreach (string path in entries)
-                {
-                    filesForInspect.Add(new FileDS(path));
-                }
-            }
-
             DataBase db = new DataBase();
             db.removePlan(plan);
 
-            this.filesInspector(filesForInspect);
-        }
+            Scanner scanner = new Scanner();
+            scanner.start(plan.path);
 
-        private void filesInspector(List<FileDS> filesForInspect)
-        {
-            DangersDetection detection = new DangersDetection();
-            DataBase db = new DataBase();
-            foreach (FileDS file in filesForInspect)
-            {
-                file.danger = detection.detectDanger(file.path);
-                if (file.danger)
-                    db.addToFoundViruses(file.path);
+
+            while (scanner.getScanStatus()) { }
+
+            string[] result = scanner.getScanResult().Split('\n');
+
+            if (result.Length <= 3) return;
+
+            for (int i = 3; i < result.Length - 1; i += 1) {
+                db.addToFoundViruses(result[i]);
             }
         }
     }

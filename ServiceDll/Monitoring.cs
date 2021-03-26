@@ -7,40 +7,52 @@ namespace ServiceDll
 {
     public class Monitoring
     {
-        static private bool alreadyRun = false;
+        private bool alreadyRun = false;
 
-        static private FileSystemWatcher watcher;
-        static private List<string> dangerFiles;
+        private FileSystemWatcher watcher;
+        private List<string> dangerFiles;
 
-        static public bool getStatus()
+        public bool start(string path)
         {
-            return Monitoring.alreadyRun;
-        }
+            if (this.alreadyRun) return false;
+            this.alreadyRun = true;
 
-        static public bool start(string path)
-        {
-            if (Monitoring.alreadyRun) return false;
-            Monitoring.alreadyRun = true;
+            this.dangerFiles = new List<string>();
 
-            Monitoring.dangerFiles = new List<string>();
-
-            Monitoring.watcher = new FileSystemWatcher();
-            Monitoring.watcher.Path = path;
-            Monitoring.watcher.NotifyFilter = NotifyFilters.LastWrite;
-            Monitoring.watcher.Filter = "*";
-            Monitoring.watcher.Changed += new FileSystemEventHandler(Monitoring.OnChanged);
-            Monitoring.watcher.EnableRaisingEvents = true;
-            Monitoring.watcher.IncludeSubdirectories = true;
+            this.watcher = new FileSystemWatcher();
+            this.watcher.Path = path;
+            this.watcher.NotifyFilter = NotifyFilters.LastWrite;
+            this.watcher.Filter = "*";
+            this.watcher.Changed += new FileSystemEventHandler(this.OnChanged);
+            this.watcher.EnableRaisingEvents = true;
+            this.watcher.IncludeSubdirectories = true;
             return true;
         }
 
-        static public void stop()
+        public void stop()
         {
-            if (Monitoring.alreadyRun) Monitoring.watcher.Dispose();
-            Monitoring.alreadyRun = false;
+            if (this.alreadyRun) this.watcher.Dispose();
+            this.alreadyRun = false;
         }
 
-        static private void OnChanged(object source, FileSystemEventArgs e)
+        public bool getStatus()
+        {
+            return this.alreadyRun;
+        }
+
+        public string result()
+        {
+            string TEXT_DetectedDangers = $"Обнаружено угроз: {this.dangerFiles.Count}";
+            string TEXT_PathOfDangersFiles = "";
+            foreach (string path in this.dangerFiles)
+            {
+                TEXT_PathOfDangersFiles += $"{path}\n";
+            }
+            string TEXT_Result = $"{TEXT_DetectedDangers}\n{TEXT_PathOfDangersFiles}";
+            return TEXT_Result;
+        }
+
+        private void OnChanged(object source, FileSystemEventArgs e)
         {
             string path = e.FullPath;
             Thread.Sleep(3000);
@@ -52,22 +64,10 @@ namespace ServiceDll
 
             if (!isDangerFile) return;
 
-            bool isContained = Monitoring.dangerFiles.Contains(path);
+            bool isContained = this.dangerFiles.Contains(path);
             if (!isContained) {
-                Monitoring.dangerFiles.Add(path);
+                this.dangerFiles.Add(path);
             }
-        }
-
-        static public string result()
-        {
-            string TEXT_DetectedDangers = $"Обнаружено угроз: {Monitoring.dangerFiles.Count}";
-            string TEXT_PathOfDangersFiles = "";
-            foreach (string path in Monitoring.dangerFiles)
-            {
-                TEXT_PathOfDangersFiles += $"{path}\n";
-            }
-            string TEXT_Result = $"{TEXT_DetectedDangers}\n{TEXT_PathOfDangersFiles}";
-            return TEXT_Result;
         }
     }
 }

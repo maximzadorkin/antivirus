@@ -2,35 +2,36 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Threading;
 
 namespace ServiceDll
 {
     public class Scanner
     {
-        static private bool scanning = false;
+        private bool scanning = false;
 
         public string pathName;
         public bool isFile;
 
         private string[] entries;
-        static private List<FileDS> filesForScan;
+        private List<FileDS> filesForScan;
 
-        static public bool getScanStatus()
+        public bool getScanStatus()
         {
-            return Scanner.scanning;
+            return this.scanning;
         }
 
         public bool start(string path)
         {
-            if (Scanner.scanning) return false;
+            if (this.scanning) return false;
             this.pathName = path;
             this.isFile = File.Exists(path);
-            Scanner.filesForScan = new List<FileDS>();
+            this.filesForScan = new List<FileDS>();
 
-            Scanner.scanning = true;
+            this.scanning = true;
 
             if (this.isFile)
-                Scanner.filesForScan.Add(new FileDS(this.pathName));
+                this.filesForScan.Add(new FileDS(this.pathName));
             else
                 this.folderScanner(this.pathName);
 
@@ -42,7 +43,7 @@ namespace ServiceDll
 
         public void stop()
         {
-            Scanner.scanning = false;
+            this.scanning = false;
         }
 
         private void folderScanner(string folderPath)
@@ -55,8 +56,8 @@ namespace ServiceDll
 
             foreach (string path in this.entries)
             {
-                if (!Scanner.scanning) return;
-                Scanner.filesForScan.Add(new FileDS(path));
+                if (!this.scanning) return;
+                this.filesForScan.Add(new FileDS(path));
             }
         }
 
@@ -65,10 +66,9 @@ namespace ServiceDll
             int fileIndex = 0;
             int dangerFilesCount = 0;
             DangersDetection detection = new DangersDetection();
-            foreach (FileDS file in Scanner.filesForScan)
+            foreach (FileDS file in this.filesForScan)
             {
-                if (!Scanner.scanning) break;
-                
+                if (!this.scanning) break;
                 file.danger = detection.detectDanger(file.path);
                 file.isChecked = true;
                 if (file.danger) dangerFilesCount += 1;
@@ -82,7 +82,7 @@ namespace ServiceDll
             int countCheckedFiles = 0;
             int dangersCount = 0;
 
-            foreach (FileDS file in Scanner.filesForScan)
+            foreach (FileDS file in this.filesForScan)
             {
                 if (!file.isChecked) break;
                 countCheckedFiles += 1;
@@ -93,7 +93,7 @@ namespace ServiceDll
                 }
             }
 
-            string TEXT_Scanned = $"Всего файлов: {Scanner.filesForScan.Count}";
+            string TEXT_Scanned = $"Всего файлов: {this.filesForScan.Count}";
             string TEXT_AlreadyScanned = $"Проверено: {countCheckedFiles}";
             string TEXT_DangerFilesCount = $"Найдено уязвимостей: {dangersCount}";
             

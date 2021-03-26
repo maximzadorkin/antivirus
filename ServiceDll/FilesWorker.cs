@@ -16,8 +16,6 @@ namespace ServiceDll
             qBytes.CopyTo(changedBytes, 0);
             bytes.CopyTo(changedBytes, qBytes.Length);
             File.WriteAllBytes(filePath, changedBytes);
-            DataBase db = new DataBase();
-            db.addToQuarantine(filePath);
             return true;
         }
 
@@ -28,8 +26,6 @@ namespace ServiceDll
             byte[] changedBytes = new byte[bytes.Length - qBytes.Length];
             bytes.Skip(qBytes.Length).ToArray().CopyTo(changedBytes, 0);
             File.WriteAllBytes(filePath, changedBytes);
-            DataBase db = new DataBase();
-            db.removeFromQuarantine(filePath);
             return true;
         }
 
@@ -38,7 +34,6 @@ namespace ServiceDll
             try
             {
                 File.Delete(filePath);
-                DataBase db = new DataBase();
                 return true;
             }
             catch (UnauthorizedAccessException _e)

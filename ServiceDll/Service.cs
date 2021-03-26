@@ -7,6 +7,7 @@ namespace ServiceDll
     {
         static public Scanner scanner = new Scanner();
         static public DataBase database = new DataBase();
+        static public Monitoring monitoring = new Monitoring();
 
         public void startScanner(string path)
         {
@@ -22,11 +23,11 @@ namespace ServiceDll
         }
         public string getScanResult()
         {
-            return scanner.getScanResult();
+            return Service.scanner.getScanResult();
         }
         public bool getScanStatus()
         {
-            return Scanner.getScanStatus();
+            return Service.scanner.getScanStatus();
         }
 
 
@@ -34,21 +35,21 @@ namespace ServiceDll
         public void startMonitoring(string path)
         {
             Thread thread = new Thread(new ThreadStart(
-                () => Monitoring.start(path)
+                () => monitoring.start(path)
             ));
             thread.Start();
         }
         public void stopMonitoring()
         {
-            Monitoring.stop();
+            monitoring.stop();
         }
         public string logMonitoring()
         {
-            return Monitoring.result();
+            return monitoring.result();
         }
         public bool getMonitoringStatus()
         {
-            return Monitoring.getStatus();
+            return monitoring.getStatus();
         }
 
 
@@ -66,10 +67,12 @@ namespace ServiceDll
                             break;
                         case FileDS.FilesHandler.ToQuarantine:
                             FilesWorker.addFileToQuarantine(file.path);
+                            db.addToQuarantine(file.path);
                             db.removeFromFoundViruses(file.path);
                             break;
                         case FileDS.FilesHandler.RemoveFromQuarantine:
                             FilesWorker.removeFileFromQuarantine(file.path);
+                            db.removeFromQuarantine(file.path);
                             db.removeFromFoundViruses(file.path);
                             break;
                         case FileDS.FilesHandler.Delete:
